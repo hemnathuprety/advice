@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1068832493167",
+    "project_id": "advice-86a94",
+    "storage_bucket": "advice-86a94.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068832493167:android:c0b0b244f606e0a4bbc79a",
+        "android_client_info": {
+          "package_name": "np.gov.doanepal.advice"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjL9GnTO_-WEp9y6keDJ0FqJl0vxLREj8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
