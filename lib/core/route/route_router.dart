@@ -18,5 +18,6 @@ class AppRouter extends RootStackRouter {
         //menuItemsAdvisory,
         AutoRoute(path: '/addAdvisory', page: AddAdvisoryMainRoute.page),
         AutoRoute(path: '/cropList', page: CropListRoute.page),
+        AutoRoute(path: '/cropDetail', page: CropDetailsRoute.page),
       ];
 }

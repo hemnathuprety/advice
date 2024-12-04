@@ -111,10 +111,17 @@ class BridgeStatisticsRoute extends _i12.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i5.CropDetailsScreen]
-class CropDetailsRoute extends _i12.PageRouteInfo<void> {
-  const CropDetailsRoute({List<_i12.PageRouteInfo>? children})
-      : super(
+class CropDetailsRoute extends _i12.PageRouteInfo<CropDetailsRouteArgs> {
+  CropDetailsRoute({
+    _i13.Key? key,
+    required String cropId,
+    List<_i12.PageRouteInfo>? children,
+  }) : super(
           CropDetailsRoute.name,
+          args: CropDetailsRouteArgs(
+            key: key,
+            cropId: cropId,
+          ),
           initialChildren: children,
         );
 
@@ -123,9 +130,29 @@ class CropDetailsRoute extends _i12.PageRouteInfo<void> {
   static _i12.PageInfo page = _i12.PageInfo(
     name,
     builder: (data) {
-      return const _i5.CropDetailsScreen();
+      final args = data.argsAs<CropDetailsRouteArgs>();
+      return _i5.CropDetailsScreen(
+        key: args.key,
+        cropId: args.cropId,
+      );
     },
   );
+}
+
+class CropDetailsRouteArgs {
+  const CropDetailsRouteArgs({
+    this.key,
+    required this.cropId,
+  });
+
+  final _i13.Key? key;
+
+  final String cropId;
+
+  @override
+  String toString() {
+    return 'CropDetailsRouteArgs{key: $key, cropId: $cropId}';
+  }
 }
 
 /// generated route for

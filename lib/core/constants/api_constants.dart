@@ -1,5 +1,5 @@
 class ApiConstants {
-  static String baseUrl = 'https://testing-app.rimes.int';
+  static String baseUrl = 'https://np-moald-api.rimes.int/v1';
 
   //Auth API
   final login = '/Login_api/login';
