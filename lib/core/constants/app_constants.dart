@@ -14,49 +14,35 @@ abstract class Env {
   static const staging = "staging";
 }
 
-class ClosureType {
+class CropType {
   final String value;
   final String name;
 
-  ClosureType({
+  CropType({
     required this.name,
     required this.value,
   });
 }
 
-List<ClosureType> closureType = [
-  ClosureType(name: "Close", value: "CLOSED"),
-  ClosureType(name: "Open", value: "OPEN"),
-  ClosureType(
-    name: "Partially Open",
-    value: "PARTIAL_OPEN",
+List<CropType> cropType = [
+  CropType(name: "Rice", value: "Rice"),
+  CropType(name: "Wheat", value: "Wheat"),
+  CropType(
+    name: "Maize",
+    value: "Maize",
   )
 ];
-class DamageType {
-  final String value;
-  final String name;
 
-  DamageType({
-    required this.name,
-    required this.value,
-  });
-}
 
-List<DamageType> damageType = [
-  DamageType(
-    name: "Full Damage",
-    value: "FULL_DAMAGE",
-  ),
-  DamageType(
-    name: "Partially Damage",
-    value: "PARTIAL_DAMAGE",
-  ),
+List<String> observedCondition = [
+  "Pest",
+  "Disease",
+  "Management Practice",
+  "Other",
 ];
-
-List<String> closureReason = [
-  "Landslide",
-  "Maintenance",
-  "Accident",
-  "Heavy Rainfall",
+List<String> waterResource = [
+  "Rivers",
+  "Groundwater",
+  "Rainwater",
   "Other",
 ];

@@ -1,5 +1,5 @@
+import 'package:advice/sections/dashboard/data/models/menu_item.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
-import 'package:advice/sections/navigation/data/models/menu_item.dart';
 import 'package:advice/themes/color_extensions.dart';
 import 'package:flutter/material.dart';
 

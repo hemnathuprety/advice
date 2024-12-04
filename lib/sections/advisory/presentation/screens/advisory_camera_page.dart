@@ -1,14 +1,15 @@
 import 'dart:developer';
 
-import 'package:auto_route/auto_route.dart';
-import 'package:camera/camera.dart';
 import 'package:advice/core/components/app_filled_button.dart';
 import 'package:advice/core/components/circle_container_view.dart';
 import 'package:advice/core/components/image_capture_widget.dart';
 import 'package:advice/core/utils/dialog_utils.dart';
 import 'package:advice/themes/color_extensions.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:image_picker/image_picker.dart';
 
 late List<CameraDescription> _cameras;
 
@@ -21,10 +22,10 @@ class AdvisoryCameraPage extends StatefulWidget {
     required this.onRemoveNewFile,
   });
 
-  final List<XFile?> imageFiles;
-  final Function(int) onNextClick;
+  final XFile? imageFiles;
+  final Function onNextClick;
   final Function(XFile?) onAddNewFile;
-  final Function(int) onRemoveNewFile;
+  final Function() onRemoveNewFile;
 
   @override
   State<AdvisoryCameraPage> createState() => _AdvisoryCameraPageState();
@@ -32,6 +33,7 @@ class AdvisoryCameraPage extends StatefulWidget {
 
 class _AdvisoryCameraPageState extends State<AdvisoryCameraPage> {
   CameraController? controller;
+  final ImagePicker _picker = ImagePicker();
 
   @override
   void initState() {
@@ -121,7 +123,7 @@ class _AdvisoryCameraPageState extends State<AdvisoryCameraPage> {
                   Align(
                     alignment: Alignment.center,
                     child: Text(
-                      "Capture Images",
+                      "Add Observations Images",
                       style: theme.titleLarge?.copyWith(
                         color: AppColors.primaryTextColorLight,
                         fontWeight: FontWeight.w400,
@@ -135,20 +137,15 @@ class _AdvisoryCameraPageState extends State<AdvisoryCameraPage> {
                       width: 68,
                       child: AppFilledButton(
                         title: "Next",
-                        color: widget.imageFiles.isEmpty
+                        color: widget.imageFiles == null
                             ? AppColors.borderNeutralColor
                             : AppColors.primary,
-                        textColor: widget.imageFiles.isEmpty
+                        textColor: widget.imageFiles == null
                             ? AppColors.primaryTextColor
                             : AppColors.primaryTextColorLight,
                         onPressed: () async {
-                          if (widget.imageFiles.isNotEmpty) {
-                            var options =
-                                await DialogUtils.showCloserOptionsDialog(
-                                    context);
-                            if (options != null) {
-                              widget.onNextClick(options);
-                            }
+                          if (widget.imageFiles != null) {
+                            widget.onNextClick();
                           }
                         },
                       ),
@@ -163,22 +160,10 @@ class _AdvisoryCameraPageState extends State<AdvisoryCameraPage> {
             child: Container(
               height: 180,
               margin: EdgeInsets.only(bottom: 124),
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: widget.imageFiles.length > 3
-                    ? widget.imageFiles.length
-                    : 3,
-                itemBuilder: (BuildContext context, int index) {
-                  if (widget.imageFiles.length > index) {
-                    var imageFile = widget.imageFiles[index];
-                    return ImageCaptureWidget(
-                      file: imageFile,
-                      onRemoveClock: () {
-                        widget.onRemoveNewFile(index);
-                      },
-                    );
-                  }
-                  return ImageCaptureWidget();
+              child: ImageCaptureWidget(
+                file: widget.imageFiles,
+                onRemoveClock: () {
+                  widget.onRemoveNewFile();
                 },
               ),
             ),
@@ -189,13 +174,9 @@ class _AdvisoryCameraPageState extends State<AdvisoryCameraPage> {
               padding: const EdgeInsets.only(bottom: 16.0),
               child: FloatingActionButton.large(
                 onPressed: () {
-                  if (widget.imageFiles.length < 5) {
-                    _takePicture();
-                  }
+                  _takePicture();
                 },
-                backgroundColor: widget.imageFiles.length < 5
-                    ? Colors.red
-                    : AppColors.borderNeutralColor,
+                backgroundColor: Colors.red,
                 foregroundColor: AppColors.primary,
                 shape: RoundedRectangleBorder(
                   side: BorderSide(
@@ -205,6 +186,32 @@ class _AdvisoryCameraPageState extends State<AdvisoryCameraPage> {
                   borderRadius: BorderRadius.circular(100),
                 ),
                 child: null,
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomLeft,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 16, bottom: 32.0),
+              child: InkWell(
+                onTap: _pickPicture,
+                child: CircleContainerView(
+                  width: 64,
+                  height: 64,
+                  // Change color as needed
+                  borderRadius: 16,
+                  child: Center(
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 160,
+                      child: Icon(
+                        FeatherIcons.filePlus,
+                        color: Colors.grey,
+                        size: 48,
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ),
           ),
@@ -218,6 +225,18 @@ class _AdvisoryCameraPageState extends State<AdvisoryCameraPage> {
     try {
       final XFile? picture = await controller?.takePicture();
       widget.onAddNewFile(picture);
+    } catch (e) {
+      log("Error taking picture: $e");
+    }
+  }
+
+  void _pickPicture() async {
+    log("Error taking picture:");
+    try {
+      final XFile? pickedFile = await _picker.pickImage(
+        source: ImageSource.gallery,
+      );
+      widget.onAddNewFile(pickedFile);
     } catch (e) {
       log("Error taking picture: $e");
     }

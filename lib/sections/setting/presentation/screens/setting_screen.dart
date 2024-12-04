@@ -3,7 +3,7 @@ import 'package:advice/core/utils/dialog_utils.dart';
 import 'package:advice/core/utils/localization_utils.dart';
 import 'package:advice/core/utils/shared_pref_manager.dart';
 import 'package:advice/sections/dashboard/presentation/blocs/profile_bloc.dart';
-import 'package:advice/sections/navigation/presentation/widgets/auth_button_widget.dart';
+import 'package:advice/sections/dashboard/presentation/widgets/auth_button_widget.dart';
 import 'package:advice/sections/setting/presentation/screens/language_selection_dialog.dart';
 import 'package:advice/themes/color_extensions.dart';
 import 'package:auto_route/auto_route.dart';

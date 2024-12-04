@@ -16,8 +16,7 @@ class AddAdvisoryMainPage extends StatefulWidget {
 
 class _AddAdvisoryMainPageState extends State<AddAdvisoryMainPage> {
   int page = 1;
-  int closerOptions = 1;
-  List<XFile?> imageFiles = [];
+  XFile? imageFiles;
 
   @override
   Widget build(BuildContext context) {
@@ -26,24 +25,22 @@ class _AddAdvisoryMainPageState extends State<AddAdvisoryMainPage> {
             imageFiles: imageFiles,
             onAddNewFile: (XFile? picture) {
               setState(() {
-                imageFiles.add(picture);
+                imageFiles = picture;
               });
             },
-            onRemoveNewFile: (index) {
+            onRemoveNewFile: () {
               setState(() {
-                imageFiles.removeAt(index);
+                imageFiles = null;
               });
             },
-            onNextClick: (options) {
+            onNextClick: () {
               setState(() {
-                closerOptions = options;
                 page = 2;
               });
             },
           )
         : AddAdvisoryPage(
             imageFiles: imageFiles,
-            closerOptions: closerOptions,
             onAddClick: () {
               log("page $page");
               setState(() {

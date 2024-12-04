@@ -50,20 +50,20 @@ class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  /// `DOR`
+  /// `Advice`
   String get title {
     return Intl.message(
-      'DOR',
+      'Advice',
       name: 'title',
       desc: '',
       args: [],
     );
   }
 
-  /// `Department of Roads`
+  /// `Advice`
   String get titleFull {
     return Intl.message(
-      'Department of Roads',
+      'Advice',
       name: 'titleFull',
       desc: '',
       args: [],
