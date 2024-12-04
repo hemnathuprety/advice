@@ -1,5 +1,5 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:advice/core/route/route_router.gr.dart';
+import 'package:auto_route/auto_route.dart';
 
 @AutoRouterConfig()
 class AppRouter extends RootStackRouter {
@@ -17,5 +17,6 @@ class AppRouter extends RootStackRouter {
         AutoRoute(path: '/alerts', page: AlertsRoute.page),
         //menuItemsAdvisory,
         AutoRoute(path: '/addAdvisory', page: AddAdvisoryMainRoute.page),
+        AutoRoute(path: '/cropList', page: CropListRoute.page),
       ];
 }

@@ -170,6 +170,8 @@ class _SideMenuState extends State<SideMenu> {
                   },
                   child: AuthButtonWidget(
                     state: state,
+                    margin: const EdgeInsets.only(
+                        left: 24, right: 24, top: 16, bottom: 24),
                   ),
                 )
               ],

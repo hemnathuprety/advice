@@ -1,15 +1,17 @@
-import 'package:advice/themes/color_extensions.dart';
 import 'package:advice/core/utils/localization_utils.dart';
 import 'package:advice/sections/dashboard/presentation/blocs/profile_bloc.dart';
+import 'package:advice/themes/color_extensions.dart';
 import 'package:flutter/material.dart';
 
 class AuthButtonWidget extends StatelessWidget {
   const AuthButtonWidget({
     super.key,
     required this.state,
+    required this.margin,
   });
 
   final ProfileState state;
+  final EdgeInsets margin;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class AuthButtonWidget extends StatelessWidget {
         color: AppColors.primary,
         borderRadius: BorderRadius.circular(12),
       ),
-      margin: const EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 24),
+      margin: margin,
       child: Row(
         children: [
           const SizedBox(width: 12),
@@ -30,9 +32,9 @@ class AuthButtonWidget extends StatelessWidget {
               (state is ProfileSuccess)
                   ? context.loc.logout
                   : context.loc.signIn,
-                style: theme.titleMedium?.copyWith(
-                  color: AppColors.primaryTextColorLight,
-                ),
+              style: theme.titleMedium?.copyWith(
+                color: AppColors.primaryTextColorLight,
+              ),
             ),
           ),
           const SizedBox(

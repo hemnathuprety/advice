@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:auto_route/auto_route.dart';
 import 'package:advice/core/di/injection_container.dart';
 import 'package:advice/core/utils/dialog_utils.dart';
 import 'package:advice/sections/alerts/presentation/screens/alerts_page.dart';
@@ -12,7 +11,9 @@ import 'package:advice/sections/dashboard/presentation/blocs/profile_bloc.dart';
 import 'package:advice/sections/dashboard/presentation/screens/home_main_page.dart';
 import 'package:advice/sections/navigation/presentation/screens/side_menu.dart';
 import 'package:advice/sections/navigation/presentation/widgets/bottom_nav_view.dart';
+import 'package:advice/sections/setting/presentation/screens/setting_screen.dart';
 import 'package:advice/themes/color_extensions.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -134,7 +135,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       ),
       MapScreen(),
       AlertsPage(),
-      AlertsPage(),
+      SettingScreen(
+        onSignInClick: () {
+          _presentOnBoarding(true);
+        },
+      ),
     ];
 
     return MultiBlocProvider(

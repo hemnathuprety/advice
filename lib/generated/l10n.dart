@@ -50,20 +50,20 @@ class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  /// `Advice`
+  /// `DOR`
   String get title {
     return Intl.message(
-      'Advice',
+      'DOR',
       name: 'title',
       desc: '',
       args: [],
     );
   }
 
-  /// `Advice`
+  /// `Department of Roads`
   String get titleFull {
     return Intl.message(
-      'Advice',
+      'Department of Roads',
       name: 'titleFull',
       desc: '',
       args: [],
@@ -145,6 +145,96 @@ class AppLocalizations {
     return Intl.message(
       'Setting',
       name: 'setting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Preferences`
+  String get preferences {
+    return Intl.message(
+      'Preferences',
+      name: 'preferences',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get language {
+    return Intl.message(
+      'Language',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notification Settings`
+  String get notificationSettings {
+    return Intl.message(
+      'Notification Settings',
+      name: 'notificationSettings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Support & Legal`
+  String get supportLegal {
+    return Intl.message(
+      'Support & Legal',
+      name: 'supportLegal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `FAQs`
+  String get FAQs {
+    return Intl.message(
+      'FAQs',
+      name: 'FAQs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Emergency Contacts`
+  String get emergencyContacts {
+    return Intl.message(
+      'Emergency Contacts',
+      name: 'emergencyContacts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About Us`
+  String get aboutUs {
+    return Intl.message(
+      'About Us',
+      name: 'aboutUs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Privacy Policy`
+  String get privacyPolicy {
+    return Intl.message(
+      'Privacy Policy',
+      name: 'privacyPolicy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Terms & Conditions`
+  String get termsConditions {
+    return Intl.message(
+      'Terms & Conditions',
+      name: 'termsConditions',
       desc: '',
       args: [],
     );
@@ -635,6 +725,726 @@ class AppLocalizations {
     return Intl.message(
       'Average Repair Time Per Month',
       name: 'averageRepairTimePerMonth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `FFGS\nForecast`
+  String get FFGSForecast {
+    return Intl.message(
+      'FFGS\nForecast',
+      name: 'FFGSForecast',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `FFGS Forecast`
+  String get FFGSForecast1 {
+    return Intl.message(
+      'FFGS Forecast',
+      name: 'FFGSForecast1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ECMWF\nForecast`
+  String get ECMWFForecast {
+    return Intl.message(
+      'ECMWF\nForecast',
+      name: 'ECMWFForecast',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ECMWF Forecast`
+  String get ECMWFForecast1 {
+    return Intl.message(
+      'ECMWF Forecast',
+      name: 'ECMWFForecast1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please log in to access this feature.`
+  String get loginRequestBody {
+    return Intl.message(
+      'Please log in to access this feature.',
+      name: 'loginRequestBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login Required`
+  String get loginRequestTitle {
+    return Intl.message(
+      'Login Required',
+      name: 'loginRequestTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Closure Reason`
+  String get closureReason {
+    return Intl.message(
+      'Closure Reason',
+      name: 'closureReason',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start Date`
+  String get startDate {
+    return Intl.message(
+      'Start Date',
+      name: 'startDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `End Date`
+  String get endDate {
+    return Intl.message(
+      'End Date',
+      name: 'endDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Repair Time`
+  String get repairTime {
+    return Intl.message(
+      'Repair Time',
+      name: 'repairTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Estimated`
+  String get estimated {
+    return Intl.message(
+      'Estimated',
+      name: 'estimated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Actual`
+  String get actual {
+    return Intl.message(
+      'Actual',
+      name: 'actual',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact Person`
+  String get contactPerson {
+    return Intl.message(
+      'Contact Person',
+      name: 'contactPerson',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View All`
+  String get viewAll {
+    return Intl.message(
+      'View All',
+      name: 'viewAll',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A map view of road and bridge closures, providing visual information about the location and severity of closures.`
+  String get enlargeMapDesc {
+    return Intl.message(
+      'A map view of road and bridge closures, providing visual information about the location and severity of closures.',
+      name: 'enlargeMapDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enlarge Map`
+  String get enlargeMap {
+    return Intl.message(
+      'Enlarge Map',
+      name: 'enlargeMap',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Capture Images`
+  String get captureImages {
+    return Intl.message(
+      'Capture Images',
+      name: 'captureImages',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Next`
+  String get next {
+    return Intl.message(
+      'Next',
+      name: 'next',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Submission Successful`
+  String get submissionSuccessful {
+    return Intl.message(
+      'Submission Successful',
+      name: 'submissionSuccessful',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your information has been submitted successfully! Thank you for completing the form.`
+  String get submissionSuccessfulDesc {
+    return Intl.message(
+      'Your information has been submitted successfully! Thank you for completing the form.',
+      name: 'submissionSuccessfulDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ok`
+  String get ok {
+    return Intl.message(
+      'Ok',
+      name: 'ok',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Submission Failed`
+  String get submissionFailed {
+    return Intl.message(
+      'Submission Failed',
+      name: 'submissionFailed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `There was an error processing your request. Please try again later.`
+  String get submissionFailedDesc {
+    return Intl.message(
+      'There was an error processing your request. Please try again later.',
+      name: 'submissionFailedDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Road Closure Advisory`
+  String get addRoadClosureAdvisory {
+    return Intl.message(
+      'Add Road Closure Advisory',
+      name: 'addRoadClosureAdvisory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Bridge Closure Advisory`
+  String get addBridgeClosureAdvisory {
+    return Intl.message(
+      'Add Bridge Closure Advisory',
+      name: 'addBridgeClosureAdvisory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Division`
+  String get division {
+    return Intl.message(
+      'Division',
+      name: 'division',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Division`
+  String get selectDivision {
+    return Intl.message(
+      'Select Division',
+      name: 'selectDivision',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Road`
+  String get road {
+    return Intl.message(
+      'Road',
+      name: 'road',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Road`
+  String get selectRoad {
+    return Intl.message(
+      'Select Road',
+      name: 'selectRoad',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Road Link`
+  String get roadLink {
+    return Intl.message(
+      'Road Link',
+      name: 'roadLink',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Road Link`
+  String get selectRoadLink {
+    return Intl.message(
+      'Select Road Link',
+      name: 'selectRoadLink',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Chainage`
+  String get enterChainage {
+    return Intl.message(
+      'Enter Chainage',
+      name: 'enterChainage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chainage`
+  String get chainage {
+    return Intl.message(
+      'Chainage',
+      name: 'chainage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `District`
+  String get district {
+    return Intl.message(
+      'District',
+      name: 'district',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select District`
+  String get selectDistrict {
+    return Intl.message(
+      'Select District',
+      name: 'selectDistrict',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Bridge Name`
+  String get enterBridgeName {
+    return Intl.message(
+      'Enter Bridge Name',
+      name: 'enterBridgeName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bridge Name`
+  String get bridgeName {
+    return Intl.message(
+      'Bridge Name',
+      name: 'bridgeName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Closure Start Date`
+  String get selectClosureStartDate {
+    return Intl.message(
+      'Select Closure Start Date',
+      name: 'selectClosureStartDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Closure End Date`
+  String get selectClosureEndDate {
+    return Intl.message(
+      'Select Closure End Date',
+      name: 'selectClosureEndDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Closed Date`
+  String get closedDate {
+    return Intl.message(
+      'Closed Date',
+      name: 'closedDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Closure Start Date`
+  String get closureStartDate {
+    return Intl.message(
+      'Closure Start Date',
+      name: 'closureStartDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Closure End Date`
+  String get closureEndDate {
+    return Intl.message(
+      'Closure End Date',
+      name: 'closureEndDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Closure Type`
+  String get closureType {
+    return Intl.message(
+      'Closure Type',
+      name: 'closureType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Closure Type`
+  String get selectClosureType {
+    return Intl.message(
+      'Select Closure Type',
+      name: 'selectClosureType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Damage Type`
+  String get damageType {
+    return Intl.message(
+      'Damage Type',
+      name: 'damageType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Damage Type`
+  String get selectDamageType {
+    return Intl.message(
+      'Select Damage Type',
+      name: 'selectDamageType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Closure Reason`
+  String get selectClosureReason {
+    return Intl.message(
+      'Select Closure Reason',
+      name: 'selectClosureReason',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Location`
+  String get enterLocation {
+    return Intl.message(
+      'Enter Location',
+      name: 'enterLocation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location`
+  String get location {
+    return Intl.message(
+      'Location',
+      name: 'location',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Contact Person Number`
+  String get enterContactPersonNumber {
+    return Intl.message(
+      'Enter Contact Person Number',
+      name: 'enterContactPersonNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Remarks`
+  String get enterRemarks {
+    return Intl.message(
+      'Enter Remarks',
+      name: 'enterRemarks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remarks`
+  String get remarks {
+    return Intl.message(
+      'Remarks',
+      name: 'remarks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reason for Closure`
+  String get reasonForClosure {
+    return Intl.message(
+      'Reason for Closure',
+      name: 'reasonForClosure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Reason for Closure`
+  String get enterReasonForClosure {
+    return Intl.message(
+      'Enter Reason for Closure',
+      name: 'enterReasonForClosure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload Images`
+  String get uploadImages {
+    return Intl.message(
+      'Upload Images',
+      name: 'uploadImages',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clear`
+  String get clear {
+    return Intl.message(
+      'Clear',
+      name: 'clear',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add`
+  String get add {
+    return Intl.message(
+      'Add',
+      name: 'add',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `from`
+  String get from {
+    return Intl.message(
+      'from',
+      name: 'from',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `to`
+  String get to {
+    return Intl.message(
+      'to',
+      name: 'to',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lat`
+  String get lat {
+    return Intl.message(
+      'Lat',
+      name: 'lat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Long`
+  String get long {
+    return Intl.message(
+      'Long',
+      name: 'long',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loading`
+  String get loading {
+    return Intl.message(
+      'Loading',
+      name: 'loading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Missing Required Fields`
+  String get missingRequiredFields {
+    return Intl.message(
+      'Missing Required Fields',
+      name: 'missingRequiredFields',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please complete all required fields before submitting the form.`
+  String get missingRequiredFieldsDesc {
+    return Intl.message(
+      'Please complete all required fields before submitting the form.',
+      name: 'missingRequiredFieldsDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Language`
+  String get selectLanguage {
+    return Intl.message(
+      'Select Language',
+      name: 'selectLanguage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `English`
+  String get english {
+    return Intl.message(
+      'English',
+      name: 'english',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nepali`
+  String get nepali {
+    return Intl.message(
+      'Nepali',
+      name: 'nepali',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Landslide`
+  String get landslide {
+    return Intl.message(
+      'Landslide',
+      name: 'landslide',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Police`
+  String get police {
+    return Intl.message(
+      'Police',
+      name: 'police',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ambulance`
+  String get ambulance {
+    return Intl.message(
+      'Ambulance',
+      name: 'ambulance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fire Service`
+  String get fire_service {
+    return Intl.message(
+      'Fire Service',
+      name: 'fire_service',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Close`
+  String get close {
+    return Intl.message(
+      'Close',
+      name: 'close',
       desc: '',
       args: [],
     );

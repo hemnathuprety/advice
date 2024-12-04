@@ -105,32 +105,39 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i604.CustomDioInterceptor>(() => _i604.CustomDioInterceptor());
     gh.factory<_i191.DioClient>(() => _i191.DioClient());
-    gh.lazySingleton<_i453.RoadCloserDataSource>(
-        () => _i453.RoadCloserDataSourceImpl());
+    gh.lazySingleton<_i667.LoginDataSource>(() => _i667.LoginDataSourceImpl());
     gh.lazySingleton<_i214.DashboardDataSource>(
         () => _i214.DashboardDataSourceImpl());
+    gh.lazySingleton<_i453.RoadCloserDataSource>(
+        () => _i453.RoadCloserDataSourceImpl());
     gh.lazySingleton<_i750.UserProfileDataSource>(
         () => _i750.UserProfileDataSourceImpl());
-    gh.lazySingleton<_i667.LoginDataSource>(() => _i667.LoginDataSourceImpl());
-    gh.lazySingleton<_i799.AlertDataSource>(() => _i799.AlertDataSourceImpl());
     gh.lazySingleton<_i896.AdvisoryDataSource>(
         () => _i896.AdvisoryDataSourceImpl());
+    gh.lazySingleton<_i799.AlertDataSource>(() => _i799.AlertDataSourceImpl());
     gh.lazySingleton<_i709.BridgeCloserDataSource>(
         () => _i709.BridgeCloserDataSourceImpl());
     gh.lazySingleton<_i715.UserProfileRepo>(() => _i1038.UserProfileRepoImpl(
         userDataSource: gh<_i750.UserProfileDataSource>()));
-    gh.lazySingleton<_i1042.LoginRepo>(() =>
-        _i483.LoginRepoImpl(loginDataSource: gh<_i667.LoginDataSource>()));
-    gh.lazySingleton<_i883.LogoutUseCase>(() =>
-        _i883.LogoutUseCase(userProfileRepo: gh<_i715.UserProfileRepo>()));
-    gh.lazySingleton<_i1030.UserProfileUseCase>(() => _i1030.UserProfileUseCase(
-        userProfileRepo: gh<_i715.UserProfileRepo>()));
     gh.lazySingleton<_i1062.BridgeCloserRepo>(() => _i331.BridgeCloserRepoImpl(
         bridgeCloserDataSource: gh<_i709.BridgeCloserDataSource>()));
-    gh.lazySingleton<_i3.RoadCloserRepo>(() => _i232.RoadCloserRepoImpl(
-        roadCloserDataSource: gh<_i453.RoadCloserDataSource>()));
+    gh.lazySingleton<_i1042.LoginRepo>(() =>
+        _i483.LoginRepoImpl(loginDataSource: gh<_i667.LoginDataSource>()));
+    gh.lazySingleton<_i841.AdvisoryRepo>(() => _i612.AdvisoryRepoImpl(
+        advisoryDataSource: gh<_i896.AdvisoryDataSource>()));
     gh.lazySingleton<_i1064.LoginUseCase>(
         () => _i1064.LoginUseCase(loginRepo: gh<_i1042.LoginRepo>()));
+    gh.factory<_i228.LoginBloc>(
+        () => _i228.LoginBloc(loginUseCase: gh<_i1064.LoginUseCase>()));
+    gh.lazySingleton<_i3.RoadCloserRepo>(() => _i232.RoadCloserRepoImpl(
+        roadCloserDataSource: gh<_i453.RoadCloserDataSource>()));
+    gh.lazySingleton<_i463.DashboardRepo>(() => _i695.DashboardRepoImpl(
+          dashboardDataSource: gh<_i214.DashboardDataSource>(),
+          roadCloserDataSource: gh<_i453.RoadCloserDataSource>(),
+          bridgeCloserDataSource: gh<_i709.BridgeCloserDataSource>(),
+        ));
+    gh.lazySingleton<_i146.DashboardUsecase>(
+        () => _i146.DashboardUsecase(dashboardRepo: gh<_i463.DashboardRepo>()));
     gh.lazySingleton<_i98.RoadCloserUsecase>(
         () => _i98.RoadCloserUsecase(roadCloserRepo: gh<_i3.RoadCloserRepo>()));
     gh.lazySingleton<_i528.RoadCloserHistoryPaginatedUsecase>(() =>
@@ -139,43 +146,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i404.RoadCloserHistoryUsecase>(() =>
         _i404.RoadCloserHistoryUsecase(
             roadCloserRepo: gh<_i3.RoadCloserRepo>()));
-    gh.factory<_i24.RoadCloserStatsBloc>(() => _i24.RoadCloserStatsBloc(
-        roadCloserUsecase: gh<_i98.RoadCloserUsecase>()));
-    gh.lazySingleton<_i1061.BridgeCloserUsecase>(() =>
-        _i1061.BridgeCloserUsecase(
-            bridgeCloserRepo: gh<_i1062.BridgeCloserRepo>()));
-    gh.lazySingleton<_i1062.BridgeCloserHistoryUsecase>(() =>
-        _i1062.BridgeCloserHistoryUsecase(
-            bridgeCloserRepo: gh<_i1062.BridgeCloserRepo>()));
-    gh.lazySingleton<_i174.BridgeCloserHistoryPaginatedUsecase>(() =>
-        _i174.BridgeCloserHistoryPaginatedUsecase(
-            bridgeCloserRepo: gh<_i1062.BridgeCloserRepo>()));
     gh.factory<_i918.RoadCloserHistoryBloc>(() => _i918.RoadCloserHistoryBloc(
           roadCloserUsecase: gh<_i528.RoadCloserHistoryPaginatedUsecase>(),
           roadCloserHistoryUsecase: gh<_i404.RoadCloserHistoryUsecase>(),
-        ));
-    gh.lazySingleton<_i926.AlertsRepo>(() => _i174.AlertsRepoImpl(
-          alertDataSource: gh<_i799.AlertDataSource>(),
-          dashboardDataSource: gh<_i214.DashboardDataSource>(),
-          roadCloserDataSource: gh<_i453.RoadCloserDataSource>(),
-          bridgeCloserDataSource: gh<_i709.BridgeCloserDataSource>(),
-        ));
-    gh.lazySingleton<_i841.AdvisoryRepo>(() => _i612.AdvisoryRepoImpl(
-        advisoryDataSource: gh<_i896.AdvisoryDataSource>()));
-    gh.lazySingleton<_i463.DashboardRepo>(() => _i695.DashboardRepoImpl(
-          dashboardDataSource: gh<_i214.DashboardDataSource>(),
-          roadCloserDataSource: gh<_i453.RoadCloserDataSource>(),
-          bridgeCloserDataSource: gh<_i709.BridgeCloserDataSource>(),
-        ));
-    gh.factory<_i380.ProfileBloc>(() => _i380.ProfileBloc(
-          profileUseCase: gh<_i1030.UserProfileUseCase>(),
-          logoutUseCase: gh<_i883.LogoutUseCase>(),
-        ));
-    gh.factory<_i323.BridgeCloserHistoryBloc>(() =>
-        _i323.BridgeCloserHistoryBloc(
-          bridgeCloserHistoryPaginatedUsecase:
-              gh<_i174.BridgeCloserHistoryPaginatedUsecase>(),
-          bridgeCloserHistoryUsecase: gh<_i1062.BridgeCloserHistoryUsecase>(),
         ));
     gh.lazySingleton<_i312.RoadsDivisionUsecase>(() =>
         _i312.RoadsDivisionUsecase(roadCloserRepo: gh<_i841.AdvisoryRepo>()));
@@ -188,6 +161,35 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i15.DivisionsUsecase(roadCloserRepo: gh<_i841.AdvisoryRepo>()));
     gh.lazySingleton<_i146.DistrictsUsecase>(
         () => _i146.DistrictsUsecase(roadCloserRepo: gh<_i841.AdvisoryRepo>()));
+    gh.factory<_i64.DashboardStatsBloc>(() => _i64.DashboardStatsBloc(
+        dashboardUsecase: gh<_i146.DashboardUsecase>()));
+    gh.lazySingleton<_i926.AlertsRepo>(() => _i174.AlertsRepoImpl(
+          alertDataSource: gh<_i799.AlertDataSource>(),
+          dashboardDataSource: gh<_i214.DashboardDataSource>(),
+          roadCloserDataSource: gh<_i453.RoadCloserDataSource>(),
+          bridgeCloserDataSource: gh<_i709.BridgeCloserDataSource>(),
+        ));
+    gh.lazySingleton<_i883.LogoutUseCase>(() =>
+        _i883.LogoutUseCase(userProfileRepo: gh<_i715.UserProfileRepo>()));
+    gh.lazySingleton<_i1030.UserProfileUseCase>(() => _i1030.UserProfileUseCase(
+        userProfileRepo: gh<_i715.UserProfileRepo>()));
+    gh.lazySingleton<_i1061.BridgeCloserUsecase>(() =>
+        _i1061.BridgeCloserUsecase(
+            bridgeCloserRepo: gh<_i1062.BridgeCloserRepo>()));
+    gh.lazySingleton<_i1062.BridgeCloserHistoryUsecase>(() =>
+        _i1062.BridgeCloserHistoryUsecase(
+            bridgeCloserRepo: gh<_i1062.BridgeCloserRepo>()));
+    gh.lazySingleton<_i174.BridgeCloserHistoryPaginatedUsecase>(() =>
+        _i174.BridgeCloserHistoryPaginatedUsecase(
+            bridgeCloserRepo: gh<_i1062.BridgeCloserRepo>()));
+    gh.factory<_i24.RoadCloserStatsBloc>(() => _i24.RoadCloserStatsBloc(
+        roadCloserUsecase: gh<_i98.RoadCloserUsecase>()));
+    gh.factory<_i380.ProfileBloc>(() => _i380.ProfileBloc(
+          profileUseCase: gh<_i1030.UserProfileUseCase>(),
+          logoutUseCase: gh<_i883.LogoutUseCase>(),
+        ));
+    gh.lazySingleton<_i125.AlertsUsecase>(
+        () => _i125.AlertsUsecase(alertsRepo: gh<_i926.AlertsRepo>()));
     gh.factory<_i1026.AddAdvisoriesBloc>(() => _i1026.AddAdvisoriesBloc(
           districtsUsecase: gh<_i146.DistrictsUsecase>(),
           divisionsUsecase: gh<_i15.DivisionsUsecase>(),
@@ -195,16 +197,14 @@ extension GetItInjectableX on _i174.GetIt {
           postAdvisoryUsecase: gh<_i973.PostAdvisoryUsecase>(),
           uploadAdvisoryImagesUsecase: gh<_i362.UploadAdvisoryImagesUsecase>(),
         ));
-    gh.lazySingleton<_i146.DashboardUsecase>(
-        () => _i146.DashboardUsecase(dashboardRepo: gh<_i463.DashboardRepo>()));
-    gh.lazySingleton<_i125.AlertsUsecase>(
-        () => _i125.AlertsUsecase(alertsRepo: gh<_i926.AlertsRepo>()));
-    gh.factory<_i228.LoginBloc>(
-        () => _i228.LoginBloc(loginUseCase: gh<_i1064.LoginUseCase>()));
+    gh.factory<_i323.BridgeCloserHistoryBloc>(() =>
+        _i323.BridgeCloserHistoryBloc(
+          bridgeCloserHistoryPaginatedUsecase:
+              gh<_i174.BridgeCloserHistoryPaginatedUsecase>(),
+          bridgeCloserHistoryUsecase: gh<_i1062.BridgeCloserHistoryUsecase>(),
+        ));
     gh.factory<_i627.BridgeCloserStatsBloc>(() => _i627.BridgeCloserStatsBloc(
         bridgeCloserUsecase: gh<_i1061.BridgeCloserUsecase>()));
-    gh.factory<_i64.DashboardStatsBloc>(() => _i64.DashboardStatsBloc(
-        dashboardUsecase: gh<_i146.DashboardUsecase>()));
     return this;
   }
 }

@@ -1,5 +1,7 @@
+import 'package:advice/core/components/circle_container_view.dart';
+import 'package:advice/themes/color_extensions.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
 class CircularBackButton extends StatelessWidget {
   const CircularBackButton({
@@ -12,18 +14,20 @@ class CircularBackButton extends StatelessWidget {
       onTap: () {
         Navigator.pop(context);
       },
-      child: Container(
-        width: 50,
-        height: 50,
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-        decoration: ShapeDecoration(
-          color: Colors.white,
-          shape: RoundedRectangleBorder(
-            side: BorderSide(width: 1, color: Color(0xFFC9C9C9)),
-            borderRadius: BorderRadius.circular(34),
+      child: CircleContainerView(
+        width: 40,
+        height: 40,
+        child: IconButton(
+          padding: EdgeInsets.all(0),
+          iconSize: 24,
+          icon: Icon(
+            FeatherIcons.chevronLeft,
+            color: AppColors.primary,
           ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
-        child: SvgPicture.asset('assets/svg/back.svg'),
       ),
     );
   }

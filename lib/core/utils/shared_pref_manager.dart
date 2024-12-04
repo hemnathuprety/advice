@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefManager {
@@ -7,6 +8,8 @@ class SharedPrefManager {
 
   static SharedPrefManager get instance => _instance;
 
+  static const languageCode = 'language_code';
+  static const notificationSetting = 'notification_setting';
   static const appSetup = 'app_setup';
   static const accessToken = 'access_token';
 
@@ -18,6 +21,16 @@ class SharedPrefManager {
   Future<bool> getAppSetUp() async {
     final sharedPref = await SharedPreferences.getInstance();
     final result = sharedPref.getBool(appSetup);
+    return result ?? false;
+  }
+  Future<void> setNotificationSetting(bool param) async {
+    final sharedPref = await SharedPreferences.getInstance();
+    await sharedPref.setBool(notificationSetting, param);
+  }
+
+  Future<bool> getNotificationSetting() async {
+    final sharedPref = await SharedPreferences.getInstance();
+    final result = sharedPref.getBool(notificationSetting);
     return result ?? false;
   }
 
@@ -35,5 +48,16 @@ class SharedPrefManager {
   Future<void> clearSharePref() async {
     final sharedPref = await SharedPreferences.getInstance();
     await sharedPref.clear();
+  }
+
+  Future<void> setLanguageCode(String code) async {
+    final sharedPref = await SharedPreferences.getInstance();
+    await sharedPref.setString(languageCode, code);
+  }
+
+  Future<String> getLanguageCode() async {
+    final sharedPref = await SharedPreferences.getInstance();
+    final result = sharedPref.getString(languageCode);
+    return result ?? Intl.getCurrentLocale();
   }
 }
