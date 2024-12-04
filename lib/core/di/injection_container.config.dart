@@ -62,6 +62,8 @@ import '../../sections/bridge-closure/presentation/blocs/bridge_closer_history_b
     as _i323;
 import '../../sections/bridge-closure/presentation/blocs/bridge_closer_stats_bloc.dart'
     as _i627;
+import '../../sections/crops/bloc/crops_bloc.dart' as _i351;
+import '../../sections/crops/repo/crops_list_repo.dart' as _i993;
 import '../../sections/dashboard/data/datasources/dashboard_data_source.dart'
     as _i214;
 import '../../sections/dashboard/data/repositories/dashboard_repo_impl.dart'
@@ -90,6 +92,7 @@ import '../../sections/road-closure/presentation/blocs/road_closer_history_bloc.
 import '../../sections/road-closure/presentation/blocs/road_closer_stats_bloc.dart'
     as _i24;
 import '../dio/dio_client.dart' as _i191;
+import '../dio/dio_helper.dart' as _i676;
 import '../dio/dio_interceptors.dart' as _i604;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -105,6 +108,7 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i604.CustomDioInterceptor>(() => _i604.CustomDioInterceptor());
     gh.factory<_i191.DioClient>(() => _i191.DioClient());
+    gh.lazySingleton<_i676.DioHelper>(() => _i676.DioHelper());
     gh.lazySingleton<_i667.LoginDataSource>(() => _i667.LoginDataSourceImpl());
     gh.lazySingleton<_i214.DashboardDataSource>(
         () => _i214.DashboardDataSourceImpl());
@@ -119,6 +123,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i709.BridgeCloserDataSourceImpl());
     gh.lazySingleton<_i715.UserProfileRepo>(() => _i1038.UserProfileRepoImpl(
         userDataSource: gh<_i750.UserProfileDataSource>()));
+    gh.factory<_i993.CropslistRepo>(
+        () => _i993.CropslistRepo(dio: gh<_i676.DioHelper>()));
+    gh.factory<_i351.CropsBloc>(
+        () => _i351.CropsBloc(cropslistRepo: gh<_i993.CropslistRepo>()));
     gh.lazySingleton<_i1062.BridgeCloserRepo>(() => _i331.BridgeCloserRepoImpl(
         bridgeCloserDataSource: gh<_i709.BridgeCloserDataSource>()));
     gh.lazySingleton<_i1042.LoginRepo>(() =>

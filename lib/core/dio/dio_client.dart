@@ -1,6 +1,5 @@
-import 'package:dio/dio.dart';
 import 'package:advice/core/constants/api_constants.dart';
-import 'package:advice/core/dio/dio_interceptors.dart';
+import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -28,10 +27,9 @@ class DioClient {
         receiveTimeout: const Duration(seconds: 30),*/
       ),
     )..interceptors.addAll([
-        CustomDioInterceptor(),
         PrettyDioLogger(
           requestBody: true,
-          responseBody: false,
+          responseBody: true,
           requestHeader: true,
         ),
       ]);

@@ -107,24 +107,8 @@ class _HomeAlertsViewState extends State<HomeAlertsView>
             borderRadius: BorderRadius.circular(16),
             boxShadow: [kDefaultCardShadow],
           ),
-          child: ListView.separated(
-            separatorBuilder: (context, index) {
-              return Divider();
-            },
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-            itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () {},
-                child: _buildAlertCard(
-                  title: 'Landslide Alert',
-                  description:
-                      'There is a high risk of landslide in your area. Please take necessary precautions.',
-                  riskLevel: 'High Risk',
-                  riskColor: Colors.red,
-                ),
-              );
-            },
-            itemCount: 10,
+          child: Center(
+            child: Text("No alerts"),
           ),
         ),
         SizedBox(
@@ -174,7 +158,10 @@ class _HomeAlertsViewState extends State<HomeAlertsView>
                     ],
                   ),
                   SizedBox(height: 4),
-                  Text(description,  style: theme.bodyMedium,),
+                  Text(
+                    description,
+                    style: theme.bodyMedium,
+                  ),
                 ],
               ),
             ),
