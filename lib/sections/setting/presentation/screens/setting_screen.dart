@@ -97,15 +97,15 @@ class _SettingScreenState extends State<SettingScreen> {
                             ),
                             const SizedBox(height: 12),
                             Text(
-                              (state is ProfileSuccess)
+                              /*(state is ProfileSuccess)
                                   ? state.profileEntity.name ?? ""
-                                  : context.loc.titleFull,
+                                  :*/ context.loc.titleFull,
                               style: theme.titleMedium,
                             ),
                             Text(
-                              (state is ProfileSuccess)
+                              /*(state is ProfileSuccess)
                                   ? state.profileEntity.email ?? ""
-                                  : "",
+                                  :*/ "",
                               style: theme.bodyMedium,
                             ),
                           ],

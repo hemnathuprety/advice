@@ -14,14 +14,11 @@ class ProfileLoading extends ProfileState {
   List<Object> get props => [];
 }
 
-
 class ProfileSuccess extends ProfileState {
-  final ProfileEntity profileEntity;
-
-  const ProfileSuccess({required this.profileEntity});
+  const ProfileSuccess();
 
   @override
-  List<Object> get props => [profileEntity];
+  List<Object> get props => [];
 }
 
 class ProfileFailed extends ProfileState {

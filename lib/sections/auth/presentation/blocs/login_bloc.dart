@@ -1,11 +1,7 @@
 import 'dart:async';
-import 'dart:developer';
 
+import 'package:advice/sections/auth/models/login_entity.dart';
 import 'package:bloc/bloc.dart';
-import 'package:advice/core/error/failures.dart';
-import 'package:advice/sections/auth/domain/entities/login_entity.dart';
-import 'package:advice/sections/auth/domain/entities/login_request_entity.dart';
-import 'package:advice/sections/auth/domain/usecases/login_usecase.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 
@@ -14,9 +10,7 @@ part 'login_state.dart';
 
 @injectable
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  final LoginUseCase loginUseCase;
-
-  LoginBloc({required this.loginUseCase}) : super(LoginInitial()) {
+  LoginBloc() : super(LoginInitial()) {
     on<PerformLoginEvent>(_performLoginEvent);
     on<ResetDataEvent>(_resetDataEvent);
   }
@@ -24,7 +18,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   FutureOr<void> _performLoginEvent(
       PerformLoginEvent event, Emitter<LoginState> emit) async {
     emit(LoginLoading());
-    try {
+    /*try {
       final response = await loginUseCase.call(LoginRequestEntity(
         email: event.email,
         password: event.password,
@@ -39,7 +33,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       });
     } catch (e) {
       log('login error in bloc: $e');
-    }
+    }*/
   }
 
   FutureOr<void> _resetDataEvent(

@@ -60,10 +60,10 @@ class AppLocalizations {
     );
   }
 
-  /// `Advice`
+  /// `Advices`
   String get titleFull {
     return Intl.message(
-      'Advice',
+      'Advices',
       name: 'titleFull',
       desc: '',
       args: [],

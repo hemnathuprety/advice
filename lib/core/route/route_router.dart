@@ -7,16 +7,10 @@ class AppRouter extends RootStackRouter {
   List<AutoRoute> get routes => [
         AutoRoute(path: '/home', page: HomeRoute.page, initial: true),
 
-        //menuItemsRoad
-        AutoRoute(path: '/roadStatistics', page: RoadStatisticsRoute.page),
-        AutoRoute(path: '/roadHistory', page: RoadHistoryRoute.page),
-        //menuItemsBridge
-        AutoRoute(path: '/bridgeStatistics', page: BridgeStatisticsRoute.page),
-        AutoRoute(path: '/bridgeHistory', page: BridgeHistoryRoute.page),
         //menuItemsAlerts
         AutoRoute(path: '/alerts', page: AlertsRoute.page),
         //menuItemsAdvisory,
-        AutoRoute(path: '/addAdvisory', page: AddAdvisoryMainRoute.page),
+        AutoRoute(path: '/addAdvisory', page: AddObservationMainRoute.page),
         AutoRoute(path: '/cropList', page: CropListRoute.page),
         AutoRoute(path: '/cropDetail', page: CropDetailsRoute.page),
       ];

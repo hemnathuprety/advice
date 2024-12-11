@@ -27,7 +27,7 @@ class DatePickerContainer extends StatefulWidget {
 class _InputBoxState extends State<DatePickerContainer> {
   DateTime selectedDate = DateTime.now();
 
-  var dateNow = NepaliDateTime.now();
+  var dateNow = DateTime.now();
 
   Future _selectDate(BuildContext context) async => showDatePicker(
         context: context,

@@ -36,13 +36,10 @@ List<CropType> cropType = [
 
 List<String> observedCondition = [
   "Pest",
-  "Disease",
+  /*"Disease",*/
   "Management Practice",
-  "Other",
 ];
 List<String> waterResource = [
-  "Rivers",
-  "Groundwater",
-  "Rainwater",
-  "Other",
+  "Irrigated",
+  "Rainfed",
 ];

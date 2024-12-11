@@ -73,8 +73,7 @@ class _CustomTextFieldState extends State<CustomLocationsTextField> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.35,
+            Expanded(
               child: TextFormField(
                 readOnly: widget.isReadOnly,
                 validator: widget.formValidator,
@@ -135,8 +134,8 @@ class _CustomTextFieldState extends State<CustomLocationsTextField> {
                 ),
               ),
             ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.35,
+            SizedBox(width: 8),
+            Expanded(
               child: TextFormField(
                 readOnly: widget.isReadOnly,
                 validator: widget.formValidator,
@@ -197,6 +196,7 @@ class _CustomTextFieldState extends State<CustomLocationsTextField> {
                 ),
               ),
             ),
+            SizedBox(width: 8),
             CircleContainerView(
               width: 48,
               height: 48,

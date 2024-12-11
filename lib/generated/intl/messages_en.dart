@@ -216,7 +216,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "termsConditions":
             MessageLookupByLibrary.simpleMessage("Terms & Conditions"),
         "title": MessageLookupByLibrary.simpleMessage("Advice"),
-        "titleFull": MessageLookupByLibrary.simpleMessage("Advice"),
+        "titleFull": MessageLookupByLibrary.simpleMessage("Advices"),
         "to": MessageLookupByLibrary.simpleMessage("to"),
         "uploadImages": MessageLookupByLibrary.simpleMessage("Upload Images"),
         "viewAll": MessageLookupByLibrary.simpleMessage("View All"),

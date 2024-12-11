@@ -10,14 +10,12 @@ class CustomSelectMenuView extends StatelessWidget {
     required this.titleText,
     required this.hintText,
     required this.list,
-    required this.controller,
   });
 
   final dynamic initialSelection;
   final Function(dynamic) onSelected;
   final String titleText;
   final String hintText;
-  final TextEditingController controller;
   final List<DropdownMenuEntry<dynamic>> list;
 
   @override
@@ -34,13 +32,12 @@ class CustomSelectMenuView extends StatelessWidget {
           height: 6,
         ),
         CircleContainerView(
-          width: MediaQuery.of(context).size.width,
+          width: double.infinity,
           height: 48,
           borderRadius: 8,
           child: DropdownMenu<dynamic>(
             menuHeight: 200,
-            controller: controller,
-            width: MediaQuery.of(context).size.width - 16,
+            width: double.infinity,
             initialSelection: initialSelection,
             inputDecorationTheme: InputDecorationTheme(
               isDense: true,
@@ -51,7 +48,10 @@ class CustomSelectMenuView extends StatelessWidget {
             label: null,
             hintText: hintText,
             trailingIcon: Icon(FeatherIcons.chevronDown),
-            onSelected: onSelected,
+            requestFocusOnTap: false,
+            onSelected: (value) {
+              onSelected(value);
+            },
             dropdownMenuEntries: list,
           ),
         ),

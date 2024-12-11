@@ -1,7 +1,7 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:advice/core/components/app_filled_button.dart';
 import 'package:advice/core/utils/localization_utils.dart';
 import 'package:advice/themes/color_extensions.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 class DialogUtils {
@@ -11,11 +11,13 @@ class DialogUtils {
     String title,
     String body,
     String btn,
+    String cancelBtn,
     Function callback,
   ) {
     final theme = Theme.of(context).textTheme;
     showDialog<bool>(
       context: context,
+      barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text(title, style: theme.titleLarge),
@@ -26,7 +28,7 @@ class DialogUtils {
                 AutoRouter.of(context).popForced();
               },
               child: Text(
-                context.loc.cancel,
+                cancelBtn,
                 style: theme.bodyLarge?.copyWith(
                   fontWeight: FontWeight.w600,
                 ),
@@ -139,7 +141,7 @@ class DialogUtils {
                   ),
                   const SizedBox(height: 12),
                   Text(
-                    "Please select the type of advisory to add.",
+                    "Please select the type of observations to add.",
                     style: theme.bodyLarge?.copyWith(),
                   ),
                   const SizedBox(height: 32),
