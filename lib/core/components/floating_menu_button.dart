@@ -7,14 +7,12 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 class HomeTopMenuButton extends StatelessWidget {
   const HomeTopMenuButton({
     super.key,
-    required this.onMenuClick,
     required this.selectedIndex,
     required this.menuShowingStatus,
   });
 
   final int selectedIndex;
   final bool menuShowingStatus;
-  final VoidCallback onMenuClick;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +34,7 @@ class HomeTopMenuButton extends StatelessWidget {
             width: 40,
             height: 40,
             child: IconButton(
-              onPressed: onMenuClick,
+              onPressed: () {},
               padding: EdgeInsets.all(0),
               iconSize: 18,
               icon:  Icon(
@@ -59,7 +57,8 @@ class HomeTopMenuButton extends StatelessWidget {
             width: 40,
             height: 40,
             child: IconButton(
-              onPressed: onMenuClick,
+              onPressed: () {
+              },
               padding: EdgeInsets.all(0),
               iconSize: 18,
               icon:  Icon(

@@ -9,12 +9,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class HomeStatsView extends StatefulWidget {
   const HomeStatsView({
     super.key,
-    required this.onMenuPress,
     required this.onMapPress,
     required this.onViewAllPress,
   });
 
-  final VoidCallback onMenuPress;
   final VoidCallback onMapPress;
   final VoidCallback onViewAllPress;
 
@@ -83,7 +81,6 @@ class _HomeStatsViewState extends State<HomeStatsView> {
                 flexibleSpace: Column(
                   children: [
                     HomeTopMenuButton(
-                      onMenuClick: widget.onMenuPress,
                       selectedIndex: 1,
                       menuShowingStatus: false,
                     ),

@@ -4,6 +4,7 @@ import 'package:advice/core/di/injection_container.dart';
 import 'package:advice/core/route/route_router.dart';
 import 'package:advice/core/services/firebase_service.dart';
 import 'package:advice/core/services/notification_service.dart';
+import 'package:advice/core/utils/localization_utils.dart';
 import 'package:advice/generated/l10n.dart';
 import 'package:advice/themes/color_extensions.dart';
 import 'package:advice/themes/theme.dart';
@@ -13,7 +14,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'firebase_options.dart';
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -27,8 +27,6 @@ Future<void> main() async {
 
   await FirebaseService().initializeFirebase();
 
-  //var token = await FirebaseMessaging.instance.getToken();
-
   configureDependencies();
   AppTheme.initUiOverlayStyle();
   getIt.registerSingleton<AppRouter>(AppRouter());
@@ -38,10 +36,39 @@ Future<void> main() async {
   ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+
+  static void setLocale(BuildContext context) {
+    final state = context.findAncestorStateOfType<_MyAppState>();
+    state?.rebuildAllChildren();
+  }
+}
+
+class _MyAppState extends State<MyApp> {
   final AppRouter _appRouter = AppRouter();
+
+  void rebuildAllChildren() {
+    void rebuild(Element el) {
+      el.markNeedsBuild();
+      // ignore: cascade_invocations
+      el.visitChildren(rebuild);
+    }
+
+    (context as Element).visitChildren(rebuild);
+  }
+
+  @override
+  Future<void> didChangeDependencies() async {
+    // ignore: unawaited_futures
+    LocalizationUtils.getLocale().then((value) {
+      rebuildAllChildren();
+    });
+    super.didChangeDependencies();
+  }
 
   // This widget is the root of your application.
   @override
@@ -56,10 +83,19 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: const [
-        Locale('en'), // English
-        Locale('ne'), // Nepali
-      ],
+      supportedLocales: LocalizationUtils.extractSupportedLocales(),
+      localeResolutionCallback: (locale, supportedLocales) {
+        // Check if the current device locale is supported
+        for (final supportedLocale in supportedLocales) {
+          if (supportedLocale.languageCode == locale?.languageCode ||
+              supportedLocale.countryCode == locale?.countryCode) {
+            return supportedLocale;
+          }
+        }
+        // If the locale of the device is not supported, use the first one
+        // from the list (English, in this case).
+        return const Locale('en');
+      },
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
         useMaterial3: true,

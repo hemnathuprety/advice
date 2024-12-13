@@ -10,7 +10,7 @@ class ImageCaptureWidget extends StatelessWidget {
     super.key,
     this.file,
     this.onRemoveClock,
-    this.width = 180,
+    this.width = 160,
   });
 
   final XFile? file;
@@ -37,7 +37,7 @@ class ImageCaptureWidget extends StatelessWidget {
                 child: Center(
                   child: SizedBox(
                     width: double.infinity,
-                    height: 160,
+                    height: 140,
                     child: file == null
                         ? const Icon(
                             FeatherIcons.image,

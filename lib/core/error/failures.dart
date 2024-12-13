@@ -1,5 +1,5 @@
 import 'package:advice/core/base_error_response_entity.dart';
-import 'package:advice/sections/auth/domain/entities/login_entity.dart';
+import 'package:advice/sections/auth/models/login_entity.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class Failure extends Equatable {

@@ -108,7 +108,10 @@ class _HomeAlertsViewState extends State<HomeAlertsView>
             boxShadow: [kDefaultCardShadow],
           ),
           child: Center(
-            child: Text("No alerts"),
+            child: Text(
+              "No alerts",
+              style: theme.bodyMedium,
+            ),
           ),
         ),
         SizedBox(

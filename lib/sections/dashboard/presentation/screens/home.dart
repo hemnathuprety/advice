@@ -1,23 +1,20 @@
 import 'dart:developer';
 
 import 'package:advice/core/di/injection_container.dart';
-import 'package:advice/core/utils/dialog_utils.dart';
 import 'package:advice/sections/alerts/presentation/screens/alerts_page.dart';
-import 'package:advice/sections/alerts/presentation/screens/map_screen.dart';
 import 'package:advice/sections/auth/presentation/blocs/login_bloc.dart';
 import 'package:advice/sections/auth/presentation/screens/signin_view.dart';
 import 'package:advice/sections/dashboard/presentation/blocs/dashboard_stats_bloc.dart';
 import 'package:advice/sections/dashboard/presentation/blocs/profile_bloc.dart';
 import 'package:advice/sections/dashboard/presentation/screens/home_main_page.dart';
-import 'package:advice/sections/navigation/presentation/screens/side_menu.dart';
-import 'package:advice/sections/navigation/presentation/widgets/bottom_nav_view.dart';
+import 'package:advice/sections/dashboard/presentation/widgets/bottom_nav_view.dart';
 import 'package:advice/sections/setting/presentation/screens/setting_screen.dart';
 import 'package:advice/themes/color_extensions.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 @RoutePage()
@@ -31,8 +28,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
-
   late bool _menuShowingStatus = false;
   late bool _showOnBoarding = false;
   late bool isLogin = false;
@@ -43,17 +38,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     super.initState();
   }
 
-  void _onMenuPress() {
-    log("onMenuPress");
-    if (_menuShowingStatus) {
-      _scaffoldKey.currentState?.closeDrawer();
-    } else {
-      _scaffoldKey.currentState?.openDrawer();
-    }
-  }
-
   void _presentOnBoarding(bool show) {
-    if (_menuShowingStatus) _onMenuPress();
     if (show) {
       setState(() {
         _showOnBoarding = true;
@@ -98,11 +83,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
 
   void onAdvisoryButtonPressed() {
-    if (isLogin) {
-      if (context.mounted) {
-        AutoRouter.of(context).pushNamed("/addAdvisory");
-      }
-    } else {
+    //if (isLogin) {
+    if (context.mounted) {
+      AutoRouter.of(context).pushNamed("/addAdvisory");
+    }
+    /*} else {
       DialogUtils.showCustomAppDialog(
         context,
         "Login Required",
@@ -114,14 +99,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           }
         },
       );
-    }
+    }*/
   }
 
   @override
   Widget build(BuildContext context) {
     final List<Widget> widgetOptions = <Widget>[
       HomeStatsView(
-        onMenuPress: _onMenuPress,
         onMapPress: () {
           setState(() {
             _bottomNavIndex = 1;
@@ -133,7 +117,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           });
         },
       ),
-      MapScreen(),
+      AlertsPage(),
       AlertsPage(),
       SettingScreen(
         onSignInClick: () {
@@ -183,7 +167,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         child: Stack(
           children: [
             Scaffold(
-              key: _scaffoldKey,
               extendBody: true,
               onDrawerChanged: (bool value) {
                 setState(() {
@@ -191,13 +174,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 });
               },
               body: widgetOptions.elementAt(_bottomNavIndex),
-              drawer: Drawer(
-                child: SideMenu(
-                  onMenuClick: _onMenuPress,
-                  onCloseClick: _onMenuPress,
-                  onAuthButtonClick: () => _presentOnBoarding(true),
-                ),
-              ),
               floatingActionButton: FloatingActionButton(
                 onPressed: () {
                   requestStoragePermission();
@@ -205,7 +181,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 backgroundColor: AppColors.primary,
                 foregroundColor: AppColors.primaryTextColorLight,
                 shape: CircleBorder(),
-                child: const Icon(FeatherIcons.camera),
+                child: SvgPicture.asset('assets/svg/scan.svg'),
                 //params
               ),
               floatingActionButtonLocation:
