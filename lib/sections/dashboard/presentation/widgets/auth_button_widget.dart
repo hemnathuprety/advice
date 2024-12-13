@@ -29,9 +29,9 @@ class AuthButtonWidget extends StatelessWidget {
           const SizedBox(width: 12),
           Expanded(
             child: Text(
-              (state is ProfileSuccess)
+              /*(state is ProfileSuccess)
                   ? context.loc.logout
-                  : context.loc.signIn,
+                  :*/ context.loc.signIn,
               style: theme.titleMedium?.copyWith(
                 color: AppColors.primaryTextColorLight,
               ),

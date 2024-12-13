@@ -17,6 +17,8 @@ import '../../sections/crops/repo/crops_list_repo.dart' as _i993;
 import '../../sections/dashboard/presentation/blocs/dashboard_stats_bloc.dart'
     as _i64;
 import '../../sections/dashboard/presentation/blocs/profile_bloc.dart' as _i380;
+import '../../sections/forecasts/bloc/weather_bloc.dart' as _i107;
+import '../../sections/forecasts/repo/forecasts_repo.dart' as _i739;
 import '../../sections/observations/blocs/observation_bloc.dart' as _i960;
 import '../../sections/observations/blocs/observation_image_bloc.dart' as _i207;
 import '../../sections/observations/repo/observation_repo.dart' as _i668;
@@ -35,7 +37,6 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     gh.factory<_i228.LoginBloc>(() => _i228.LoginBloc());
-    gh.factory<_i64.DashboardStatsBloc>(() => _i64.DashboardStatsBloc());
     gh.factory<_i380.ProfileBloc>(() => _i380.ProfileBloc());
     gh.factory<_i604.CustomDioInterceptor>(() => _i604.CustomDioInterceptor());
     gh.lazySingleton<_i676.DioHelper>(() => _i676.DioHelper());
@@ -43,10 +44,16 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i993.CropslistRepo(dio: gh<_i676.DioHelper>()));
     gh.factory<_i668.ObservationRepo>(
         () => _i668.ObservationRepo(dio: gh<_i676.DioHelper>()));
+    gh.factory<_i739.ForecastsRepo>(
+        () => _i739.ForecastsRepo(dio: gh<_i676.DioHelper>()));
     gh.factory<_i351.CropsBloc>(
         () => _i351.CropsBloc(cropslistRepo: gh<_i993.CropslistRepo>()));
     gh.factory<_i207.ObservationImageBloc>(() => _i207.ObservationImageBloc(
         observationRepo: gh<_i668.ObservationRepo>()));
+    gh.factory<_i64.DashboardStatsBloc>(() =>
+        _i64.DashboardStatsBloc(forecastsRepo: gh<_i739.ForecastsRepo>()));
+    gh.factory<_i107.WeatherBloc>(
+        () => _i107.WeatherBloc(forecastsRepo: gh<_i739.ForecastsRepo>()));
     gh.factory<_i960.ObservationBloc>(() => _i960.ObservationBloc(
           observationRepo: gh<_i668.ObservationRepo>(),
           cropslistRepo: gh<_i993.CropslistRepo>(),

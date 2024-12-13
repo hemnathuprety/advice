@@ -132,12 +132,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           create: (context) => getIt<LoginBloc>(),
         ),
         BlocProvider(
-          create: (context) =>
-              getIt<ProfileBloc>()..add(const GetProfileEvent()),
+          create: (context) => getIt<ProfileBloc>(),
         ),
         BlocProvider(
-          create: (context) => getIt<DashboardStatsBloc>()
-            ..add(const GetDashboardAlertsEvent(page: "1")),
+          create: (context) =>
+              getIt<DashboardStatsBloc>()..add(DashboardStatsEvent.started()),
         ),
       ],
       child: MultiBlocListener(
@@ -145,14 +144,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           BlocListener<LoginBloc, LoginState>(
             listener: (context, state) {
               if (state is LoginSuccess) {
-                context.read<ProfileBloc>().add(const GetProfileEvent());
+                //context.read<ProfileBloc>().add(const GetProfileEvent());
                 _presentOnBoarding(false);
               }
             },
           ),
           BlocListener<ProfileBloc, ProfileState>(
             listener: (context, state) {
-              if (state is ProfileSuccess) {
+              /*if (state is ProfileSuccess) {
                 setState(() {
                   isLogin = true;
                 });
@@ -160,7 +159,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 setState(() {
                   isLogin = false;
                 });
-              }
+              }*/
             },
           ),
         ],

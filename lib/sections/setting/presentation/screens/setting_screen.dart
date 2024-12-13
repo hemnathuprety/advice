@@ -238,7 +238,7 @@ class _SettingScreenState extends State<SettingScreen> {
                     ),
                     InkWell(
                       onTap: () async {
-                        if (state is ProfileSuccess) {
+                        /*if (state is ProfileSuccess) {
                           final bool shouldLogout =
                               await DialogUtils.showLogoutDialog(context) ??
                                   false;
@@ -249,7 +249,7 @@ class _SettingScreenState extends State<SettingScreen> {
                           }
                         } else {
                           widget.onSignInClick();
-                        }
+                        }*/
                       },
                       child: AuthButtonWidget(
                         state: state,

@@ -15,18 +15,20 @@ import 'package:advice/sections/crops/presentation/screens/crop_details_screen.d
 import 'package:advice/sections/crops/presentation/screens/crop_list_screen.dart'
     as _i4;
 import 'package:advice/sections/dashboard/presentation/screens/home.dart'
+    as _i6;
+import 'package:advice/sections/forecasts/presentation/screens/forecast_details.dart'
     as _i5;
 import 'package:advice/sections/observations/presentation/screens/add_observation_main_page.dart'
     as _i1;
 import 'package:advice/sections/setting/presentation/screens/setting_screen.dart'
-    as _i6;
-import 'package:auto_route/auto_route.dart' as _i7;
-import 'package:flutter/material.dart' as _i8;
+    as _i7;
+import 'package:auto_route/auto_route.dart' as _i8;
+import 'package:flutter/material.dart' as _i9;
 
 /// generated route for
 /// [_i1.AddObservationMainPage]
-class AddObservationMainRoute extends _i7.PageRouteInfo<void> {
-  const AddObservationMainRoute({List<_i7.PageRouteInfo>? children})
+class AddObservationMainRoute extends _i8.PageRouteInfo<void> {
+  const AddObservationMainRoute({List<_i8.PageRouteInfo>? children})
       : super(
           AddObservationMainRoute.name,
           initialChildren: children,
@@ -34,7 +36,7 @@ class AddObservationMainRoute extends _i7.PageRouteInfo<void> {
 
   static const String name = 'AddObservationMainRoute';
 
-  static _i7.PageInfo page = _i7.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
       return const _i1.AddObservationMainPage();
@@ -44,8 +46,8 @@ class AddObservationMainRoute extends _i7.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.AlertsPage]
-class AlertsRoute extends _i7.PageRouteInfo<void> {
-  const AlertsRoute({List<_i7.PageRouteInfo>? children})
+class AlertsRoute extends _i8.PageRouteInfo<void> {
+  const AlertsRoute({List<_i8.PageRouteInfo>? children})
       : super(
           AlertsRoute.name,
           initialChildren: children,
@@ -53,7 +55,7 @@ class AlertsRoute extends _i7.PageRouteInfo<void> {
 
   static const String name = 'AlertsRoute';
 
-  static _i7.PageInfo page = _i7.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
       return const _i2.AlertsPage();
@@ -63,11 +65,11 @@ class AlertsRoute extends _i7.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.CropDetailsScreen]
-class CropDetailsRoute extends _i7.PageRouteInfo<CropDetailsRouteArgs> {
+class CropDetailsRoute extends _i8.PageRouteInfo<CropDetailsRouteArgs> {
   CropDetailsRoute({
-    _i8.Key? key,
+    _i9.Key? key,
     required String cropId,
-    List<_i7.PageRouteInfo>? children,
+    List<_i8.PageRouteInfo>? children,
   }) : super(
           CropDetailsRoute.name,
           args: CropDetailsRouteArgs(
@@ -79,7 +81,7 @@ class CropDetailsRoute extends _i7.PageRouteInfo<CropDetailsRouteArgs> {
 
   static const String name = 'CropDetailsRoute';
 
-  static _i7.PageInfo page = _i7.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<CropDetailsRouteArgs>();
@@ -97,7 +99,7 @@ class CropDetailsRouteArgs {
     required this.cropId,
   });
 
-  final _i8.Key? key;
+  final _i9.Key? key;
 
   final String cropId;
 
@@ -109,8 +111,8 @@ class CropDetailsRouteArgs {
 
 /// generated route for
 /// [_i4.CropListScreen]
-class CropListRoute extends _i7.PageRouteInfo<void> {
-  const CropListRoute({List<_i7.PageRouteInfo>? children})
+class CropListRoute extends _i8.PageRouteInfo<void> {
+  const CropListRoute({List<_i8.PageRouteInfo>? children})
       : super(
           CropListRoute.name,
           initialChildren: children,
@@ -118,7 +120,7 @@ class CropListRoute extends _i7.PageRouteInfo<void> {
 
   static const String name = 'CropListRoute';
 
-  static _i7.PageInfo page = _i7.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
       return const _i4.CropListScreen();
@@ -127,9 +129,28 @@ class CropListRoute extends _i7.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i5.HomePage]
-class HomeRoute extends _i7.PageRouteInfo<void> {
-  const HomeRoute({List<_i7.PageRouteInfo>? children})
+/// [_i5.ForecastDetailScreen]
+class ForecastDetailRoute extends _i8.PageRouteInfo<void> {
+  const ForecastDetailRoute({List<_i8.PageRouteInfo>? children})
+      : super(
+          ForecastDetailRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ForecastDetailRoute';
+
+  static _i8.PageInfo page = _i8.PageInfo(
+    name,
+    builder: (data) {
+      return const _i5.ForecastDetailScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [_i6.HomePage]
+class HomeRoute extends _i8.PageRouteInfo<void> {
+  const HomeRoute({List<_i8.PageRouteInfo>? children})
       : super(
           HomeRoute.name,
           initialChildren: children,
@@ -137,21 +158,21 @@ class HomeRoute extends _i7.PageRouteInfo<void> {
 
   static const String name = 'HomeRoute';
 
-  static _i7.PageInfo page = _i7.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
-      return const _i5.HomePage();
+      return const _i6.HomePage();
     },
   );
 }
 
 /// generated route for
-/// [_i6.SettingScreen]
-class SettingRoute extends _i7.PageRouteInfo<SettingRouteArgs> {
+/// [_i7.SettingScreen]
+class SettingRoute extends _i8.PageRouteInfo<SettingRouteArgs> {
   SettingRoute({
-    _i8.Key? key,
-    required _i8.VoidCallback onSignInClick,
-    List<_i7.PageRouteInfo>? children,
+    _i9.Key? key,
+    required _i9.VoidCallback onSignInClick,
+    List<_i8.PageRouteInfo>? children,
   }) : super(
           SettingRoute.name,
           args: SettingRouteArgs(
@@ -163,11 +184,11 @@ class SettingRoute extends _i7.PageRouteInfo<SettingRouteArgs> {
 
   static const String name = 'SettingRoute';
 
-  static _i7.PageInfo page = _i7.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<SettingRouteArgs>();
-      return _i6.SettingScreen(
+      return _i7.SettingScreen(
         key: args.key,
         onSignInClick: args.onSignInClick,
       );
@@ -181,9 +202,9 @@ class SettingRouteArgs {
     required this.onSignInClick,
   });
 
-  final _i8.Key? key;
+  final _i9.Key? key;
 
-  final _i8.VoidCallback onSignInClick;
+  final _i9.VoidCallback onSignInClick;
 
   @override
   String toString() {

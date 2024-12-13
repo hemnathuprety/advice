@@ -3,6 +3,7 @@ import 'package:advice/core/components/location_selection.dart';
 import 'package:advice/sections/dashboard/presentation/blocs/dashboard_stats_bloc.dart';
 import 'package:advice/sections/dashboard/presentation/widgets/crop_guide_widget.dart';
 import 'package:advice/sections/dashboard/presentation/widgets/home_alerts_view.dart';
+import 'package:advice/sections/dashboard/presentation/widgets/weather_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -106,6 +107,8 @@ class _HomeStatsViewState extends State<HomeStatsView> {
               ),
               SliverList.list(
                 children: [
+                  if (state.forecastModel != null)
+                    WeatherCard(forecastModel: state.forecastModel!),
                   HomeAlertsView(
                     outerScrollController: _outerScrollController,
                     onViewAllPress: widget.onViewAllPress,
