@@ -1,5 +1,4 @@
 import 'package:advice/core/components/app_filled_button.dart';
-import 'package:advice/core/constants/asset_constants.dart';
 import 'package:advice/core/utils/localization_utils.dart';
 import 'package:advice/sections/auth/presentation/blocs/login_bloc.dart';
 import 'package:advice/themes/color_extensions.dart';
@@ -16,8 +15,8 @@ class SignInView extends StatefulWidget {
 }
 
 class _SignInViewState extends State<SignInView> {
-  final _emailController = TextEditingController(text: "rimes@rimes.int");
-  final _passController = TextEditingController(text: "Nepal@123");
+  final _emailController = TextEditingController(text: "admin@moald.com");
+  final _passController = TextEditingController(text: "hello@123");
 
   bool isObscured = true;
 
@@ -56,8 +55,7 @@ class _SignInViewState extends State<SignInView> {
                     blurRadius: 5,
                   ),
                   BoxShadow(
-                    color:
-                        AppColors.borderNeutralColorDark.withOpacity(0.3),
+                    color: AppColors.borderNeutralColorDark.withOpacity(0.3),
                     offset: const Offset(0, 30),
                     blurRadius: 30,
                   )
@@ -68,7 +66,7 @@ class _SignInViewState extends State<SignInView> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const SizedBox(height: 16),
-                  Image.asset(AssetConstants.crop1),
+                  //Image.asset(AssetConstants.crop1),
                   const SizedBox(height: 12),
                   Text(
                     context.loc.signIn,
@@ -123,17 +121,17 @@ class _SignInViewState extends State<SignInView> {
                   SizedBox(
                     height: 52.0,
                     child: AppFilledButton(
-                      color: (state is LoginLoading)
+                      color: (state.isLoading)
                           ? AppColors.borderNeutralColor
                           : AppColors.primary,
                       title: context.loc.signIn,
                       icon: Icons.arrow_forward_rounded,
                       onPressed: () {
-                        if (state is! LoginLoading) {
+                        if (!state.isLoading) {
                           context.read<LoginBloc>().add(
-                                PerformLoginEvent(
-                                  email: _emailController.text,
-                                  password: _passController.text,
+                                LoginEvent.performLogin(
+                                  _passController.text,
+                                  _emailController.text,
                                 ),
                               );
                         }
@@ -153,11 +151,11 @@ class _SignInViewState extends State<SignInView> {
                       ),
                     ),
                     onPressed: () {
-                      context.read<LoginBloc>().add(ResetDataEvent());
+                      context.read<LoginBloc>().add(LoginEvent.resetData());
                       widget.closeModal!();
                     },
                   ),
-                  if (state is LoginFailed)
+                  if (state.hasError)
                     Text(
                       state.errorMessage,
                       style: theme.bodyMedium?.copyWith(

@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:advice/core/di/injection_container.dart';
+import 'package:advice/core/utils/dialog_utils.dart';
 import 'package:advice/sections/alerts/presentation/screens/alerts_page.dart';
 import 'package:advice/sections/auth/presentation/blocs/login_bloc.dart';
 import 'package:advice/sections/auth/presentation/screens/signin_view.dart';
@@ -83,23 +84,24 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
 
   void onAdvisoryButtonPressed() {
-    //if (isLogin) {
-    if (context.mounted) {
-      AutoRouter.of(context).pushNamed("/addAdvisory");
-    }
-    /*} else {
+    if (isLogin) {
+      if (context.mounted) {
+        AutoRouter.of(context).pushNamed("/addAdvisory");
+      }
+    } else {
       DialogUtils.showCustomAppDialog(
         context,
         "Login Required",
         "Please log in to access this feature.",
         "Login",
+        "Close",
         (result) {
           if (result) {
             _presentOnBoarding(true);
           }
         },
       );
-    }*/
+    }
   }
 
   @override
@@ -143,15 +145,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         listeners: [
           BlocListener<LoginBloc, LoginState>(
             listener: (context, state) {
-              if (state is LoginSuccess) {
-                //context.read<ProfileBloc>().add(const GetProfileEvent());
+              if (state.profileModel != null) {
+                context.read<ProfileBloc>().add(ProfileEvent.started());
                 _presentOnBoarding(false);
               }
             },
           ),
           BlocListener<ProfileBloc, ProfileState>(
             listener: (context, state) {
-              /*if (state is ProfileSuccess) {
+              if (state.profileModel != null) {
                 setState(() {
                   isLogin = true;
                 });
@@ -159,7 +161,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 setState(() {
                   isLogin = false;
                 });
-              }*/
+              }
             },
           ),
         ],

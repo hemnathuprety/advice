@@ -8,11 +8,6 @@ final kDefaultCardShadow = BoxShadow(
   color: Colors.black.withOpacity(0.1),
 );
 
-abstract class Env {
-  static const development = "development";
-  static const production = "production";
-  static const staging = "staging";
-}
 
 class CropType {
   final String value;
@@ -24,22 +19,8 @@ class CropType {
   });
 }
 
-List<CropType> cropType = [
-  CropType(name: "Rice", value: "Rice"),
-  CropType(name: "Wheat", value: "Wheat"),
-  CropType(
-    name: "Maize",
-    value: "Maize",
-  )
-];
-
-
 List<String> observedCondition = [
   "Pest",
   /*"Disease",*/
   "Management Practice",
-];
-List<String> waterResource = [
-  "Irrigated",
-  "Rainfed",
 ];
