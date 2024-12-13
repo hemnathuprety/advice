@@ -105,7 +105,7 @@ class _CropListScreenState extends State<CropListScreen> {
                           ),
                           Expanded(
                             child: Text(
-                              state.crops[index].name ?? '',
+                              state.crops![index].name ?? '',
                               style: theme.titleMedium,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
