@@ -214,14 +214,14 @@ class PestDetailsSheet extends StatelessWidget {
                             height: 50,
                             errorBuilder: (context, error, stackTrace) {
                               return Image.asset(
-                                "assets/images/crop_placeholder.png",
+                                "assets/images/crop_1.png",
                                 width: 50,
                                 height: 50,
                               );
                             },
                           )
                         : Image.asset(
-                            "assets/images/crop_placeholder.png",
+                            "assets/images/crop_1.png",
                             width: 50,
                             height: 50,
                           ),

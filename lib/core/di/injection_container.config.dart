@@ -46,10 +46,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i993.CropslistRepo(dio: gh<_i676.DioHelper>()));
     gh.factory<_i668.ObservationRepo>(
         () => _i668.ObservationRepo(dio: gh<_i676.DioHelper>()));
-    gh.factory<_i739.ForecastsRepo>(
-        () => _i739.ForecastsRepo(dio: gh<_i676.DioHelper>()));
     gh.factory<_i591.AuthRepo>(
         () => _i591.AuthRepo(dio: gh<_i676.DioHelper>()));
+    gh.factory<_i739.ForecastsRepo>(
+        () => _i739.ForecastsRepo(dio: gh<_i676.DioHelper>()));
     gh.factory<_i351.CropsBloc>(
         () => _i351.CropsBloc(cropslistRepo: gh<_i993.CropslistRepo>()));
     gh.factory<_i207.ObservationImageBloc>(() => _i207.ObservationImageBloc(
