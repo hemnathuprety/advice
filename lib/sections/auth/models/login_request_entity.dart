@@ -1,11 +1,16 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class LoginRequestEntity extends Equatable {
-  final String? email;
-  final String? password;
+part 'login_request_entity.freezed.dart';
+part 'login_request_entity.g.dart';
 
-  const LoginRequestEntity({this.email, this.password});
+@freezed
+class LoginRequestEntity with _$LoginRequestEntity {
+  const factory LoginRequestEntity({
+    @JsonKey(name: 'email') String? email,
+    @JsonKey(name: 'password') String? password,
+    @JsonKey(name: 'username') String? username,
+  }) = _LoginRequestEntity;
 
-  @override
-  List<Object?> get props => [];
+  factory LoginRequestEntity.fromJson(Map<String, Object?> json) => _$LoginRequestEntityFromJson(json);
 }
+

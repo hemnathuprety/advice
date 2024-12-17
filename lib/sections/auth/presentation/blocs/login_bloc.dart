@@ -1,43 +1,56 @@
-import 'dart:async';
+import 'dart:convert';
 
-import 'package:advice/sections/auth/models/login_entity.dart';
+import 'package:advice/core/utils/shared_pref_manager.dart';
+import 'package:advice/sections/auth/models/login_error_model.dart';
+import 'package:advice/sections/auth/models/login_request_entity.dart';
+import 'package:advice/sections/auth/models/profile_model.dart';
+import 'package:advice/sections/auth/repo/auth_repo.dart';
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+part 'login_bloc.freezed.dart';
 part 'login_event.dart';
 part 'login_state.dart';
 
 @injectable
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc() : super(LoginInitial()) {
-    on<PerformLoginEvent>(_performLoginEvent);
-    on<ResetDataEvent>(_resetDataEvent);
-  }
+  final AuthRepo authRepo;
 
-  FutureOr<void> _performLoginEvent(
-      PerformLoginEvent event, Emitter<LoginState> emit) async {
-    emit(LoginLoading());
-    /*try {
-      final response = await loginUseCase.call(LoginRequestEntity(
-        email: event.email,
-        password: event.password,
-      ));
-      response.fold((l) {
-        final BaseResponseFailure errorMessage = l as BaseResponseFailure;
-
-        emit(LoginFailed(errorMessage: errorMessage.message));
-        log('login error in bloc: ${errorMessage.message}');
-      }, (data) async {
-        emit(LoginSuccess(loginEntity: data));
-      });
-    } catch (e) {
-      log('login error in bloc: $e');
-    }*/
-  }
-
-  FutureOr<void> _resetDataEvent(
-      ResetDataEvent event, Emitter<LoginState> emit) {
-    emit(LoginInitial());
+  LoginBloc({required this.authRepo}) : super(const LoginState.initial()) {
+    on<LoginEvent>((event, emit) async {
+      await event.when(
+        started: () {},
+        performLogin: (password, email) async {
+          emit(state.copyWith(isLoading: true));
+          var profileModel = await authRepo.getLoginDetails(LoginRequestEntity(
+              email: email, password: password, username: email));
+          if (profileModel is ProfileModel) {
+            await SharedPrefManager.instance.setUserProfile(jsonEncode(profileModel));
+            emit(
+              state.copyWith(profileModel: profileModel, isLoading: false),
+            );
+          } else if (profileModel is LoginErrorModel) {
+            emit(
+              state.copyWith(
+                  hasError: true,
+                  errorMessage: profileModel.detail ?? "",
+                  isLoading: false),
+            );
+          } else {
+            emit(
+              state.copyWith(
+                  hasError: true,
+                  errorMessage:
+                      "No active account found with the given credentials",
+                  isLoading: false),
+            );
+          }
+        },
+        resetData: () {
+          emit(LoginState.initial());
+        },
+      );
+    });
   }
 }

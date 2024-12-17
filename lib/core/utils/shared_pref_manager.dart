@@ -34,12 +34,12 @@ class SharedPrefManager {
     return result ?? false;
   }
 
-  Future<void> setAccessToken(String code) async {
+  Future<void> setUserProfile(String code) async {
     final sharedPref = await SharedPreferences.getInstance();
     await sharedPref.setString(accessToken, code);
   }
 
-  Future<String> getAccessToken() async {
+  Future<String> getUserProfile() async {
     final sharedPref = await SharedPreferences.getInstance();
     final result = sharedPref.getString(accessToken);
     return result ?? '';

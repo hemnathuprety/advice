@@ -29,7 +29,7 @@ class _SettingScreenState extends State<SettingScreen> {
       builder: (BuildContext context) {
         return LanguageSelectionDialog(
           onLanguageChanged: (p0) {
-            //LocalizationUtils.changeLocale(p0.languageCode, context);
+            LocalizationUtils.changeLocale(p0.languageCode, context);
           },
         );
       },
@@ -97,15 +97,15 @@ class _SettingScreenState extends State<SettingScreen> {
                             ),
                             const SizedBox(height: 12),
                             Text(
-                              /*(state is ProfileSuccess)
-                                  ? state.profileEntity.name ?? ""
-                                  :*/ context.loc.titleFull,
+                              (state.profileModel != null)
+                                  ? state.profileModel?.user?.username ?? ""
+                                  : context.loc.titleFull,
                               style: theme.titleMedium,
                             ),
                             Text(
-                              /*(state is ProfileSuccess)
-                                  ? state.profileEntity.email ?? ""
-                                  :*/ "",
+                              (state.profileModel != null)
+                                  ? state.profileModel?.user?.email ?? ""
+                                  : "",
                               style: theme.bodyMedium,
                             ),
                           ],
@@ -238,14 +238,14 @@ class _SettingScreenState extends State<SettingScreen> {
                     ),
                     InkWell(
                       onTap: () async {
-                        if (state is ProfileSuccess) {
+                        if (state.profileModel != null) {
                           final bool shouldLogout =
                               await DialogUtils.showLogoutDialog(context) ??
                                   false;
                           if (shouldLogout && context.mounted) {
                             context
                                 .read<ProfileBloc>()
-                                .add(const LogoutEvent());
+                                .add(ProfileEvent.logout());
                           }
                         } else {
                           widget.onSignInClick();

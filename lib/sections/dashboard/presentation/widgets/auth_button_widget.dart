@@ -29,7 +29,7 @@ class AuthButtonWidget extends StatelessWidget {
           const SizedBox(width: 12),
           Expanded(
             child: Text(
-              (state is ProfileSuccess)
+              (state.profileModel != null)
                   ? context.loc.logout
                   : context.loc.signIn,
               style: theme.titleMedium?.copyWith(

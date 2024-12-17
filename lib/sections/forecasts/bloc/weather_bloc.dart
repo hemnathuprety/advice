@@ -5,23 +5,20 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-part 'dashboard_stats_bloc.freezed.dart';
-
-part 'dashboard_stats_event.dart';
-
-part 'dashboard_stats_state.dart';
+part 'weather_bloc.freezed.dart';
+part 'weather_event.dart';
+part 'weather_state.dart';
 
 @injectable
-class DashboardStatsBloc
-    extends Bloc<DashboardStatsEvent, DashboardStatsState> {
+class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   ForecastsRepo forecastsRepo;
 
-  DashboardStatsBloc({required this.forecastsRepo})
-      : super(const DashboardStatsState.initial()) {
-    on<DashboardStatsEvent>((event, emit) async {
+  WeatherBloc({required this.forecastsRepo})
+      : super(const WeatherState.initial()) {
+    on<WeatherEvent>((event, emit) async {
       await event.when(started: () async {
         DateTime currentDate = DateTime.now();
-        DateTime futureDate = currentDate.add(Duration(days: 1));
+        DateTime futureDate = currentDate.add(Duration(days: 7));
 
         var administrativeId = "1";
 
