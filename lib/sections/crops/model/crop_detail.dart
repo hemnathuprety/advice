@@ -62,7 +62,7 @@ class Stage with _$Stage {
     @JsonKey(name: "id") int? id,
     @JsonKey(name: "management_practices")
     List<ManagementPractice>? managementPractices,
-    @JsonKey(name: "potential_pests") List<dynamic>? potentialPests,
+    @JsonKey(name: "potential_pests") List<PotentialPest>? potentialPests,
     @JsonKey(name: "variety") dynamic variety,
     @JsonKey(name: "crop") int? crop,
     @JsonKey(name: "major_stage") dynamic majorStage,

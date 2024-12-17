@@ -14,5 +14,6 @@ class AppRouter extends RootStackRouter {
         AutoRoute(path: '/cropList', page: CropListRoute.page),
         AutoRoute(path: '/cropDetail', page: CropDetailsRoute.page),
         AutoRoute(path: '/weatherDetail', page: ForecastDetailRoute.page),
+        AutoRoute(path: '/stagedetail', page: StageDetailRoute.page),
       ];
 }

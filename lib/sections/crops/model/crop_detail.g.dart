@@ -91,7 +91,9 @@ _$StageImpl _$$StageImplFromJson(Map<String, dynamic> json) => _$StageImpl(
       managementPractices: (json['management_practices'] as List<dynamic>?)
           ?.map((e) => ManagementPractice.fromJson(e as Map<String, dynamic>))
           .toList(),
-      potentialPests: json['potential_pests'] as List<dynamic>?,
+      potentialPests: (json['potential_pests'] as List<dynamic>?)
+          ?.map((e) => PotentialPest.fromJson(e as Map<String, dynamic>))
+          .toList(),
       variety: json['variety'],
       crop: (json['crop'] as num?)?.toInt(),
       majorStage: json['major_stage'],

@@ -991,7 +991,7 @@ mixin _$Stage {
   List<ManagementPractice>? get managementPractices =>
       throw _privateConstructorUsedError;
   @JsonKey(name: "potential_pests")
-  List<dynamic>? get potentialPests => throw _privateConstructorUsedError;
+  List<PotentialPest>? get potentialPests => throw _privateConstructorUsedError;
   @JsonKey(name: "variety")
   dynamic get variety => throw _privateConstructorUsedError;
   @JsonKey(name: "crop")
@@ -1029,7 +1029,7 @@ abstract class $StageCopyWith<$Res> {
       {@JsonKey(name: "id") int? id,
       @JsonKey(name: "management_practices")
       List<ManagementPractice>? managementPractices,
-      @JsonKey(name: "potential_pests") List<dynamic>? potentialPests,
+      @JsonKey(name: "potential_pests") List<PotentialPest>? potentialPests,
       @JsonKey(name: "variety") dynamic variety,
       @JsonKey(name: "crop") int? crop,
       @JsonKey(name: "major_stage") dynamic majorStage,
@@ -1081,7 +1081,7 @@ class _$StageCopyWithImpl<$Res, $Val extends Stage>
       potentialPests: freezed == potentialPests
           ? _value.potentialPests
           : potentialPests // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<PotentialPest>?,
       variety: freezed == variety
           ? _value.variety
           : variety // ignore: cast_nullable_to_non_nullable
@@ -1133,7 +1133,7 @@ abstract class _$$StageImplCopyWith<$Res> implements $StageCopyWith<$Res> {
       {@JsonKey(name: "id") int? id,
       @JsonKey(name: "management_practices")
       List<ManagementPractice>? managementPractices,
-      @JsonKey(name: "potential_pests") List<dynamic>? potentialPests,
+      @JsonKey(name: "potential_pests") List<PotentialPest>? potentialPests,
       @JsonKey(name: "variety") dynamic variety,
       @JsonKey(name: "crop") int? crop,
       @JsonKey(name: "major_stage") dynamic majorStage,
@@ -1183,7 +1183,7 @@ class __$$StageImplCopyWithImpl<$Res>
       potentialPests: freezed == potentialPests
           ? _value._potentialPests
           : potentialPests // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<PotentialPest>?,
       variety: freezed == variety
           ? _value.variety
           : variety // ignore: cast_nullable_to_non_nullable
@@ -1231,7 +1231,8 @@ class _$StageImpl implements _Stage {
       {@JsonKey(name: "id") this.id,
       @JsonKey(name: "management_practices")
       final List<ManagementPractice>? managementPractices,
-      @JsonKey(name: "potential_pests") final List<dynamic>? potentialPests,
+      @JsonKey(name: "potential_pests")
+      final List<PotentialPest>? potentialPests,
       @JsonKey(name: "variety") this.variety,
       @JsonKey(name: "crop") this.crop,
       @JsonKey(name: "major_stage") this.majorStage,
@@ -1263,10 +1264,10 @@ class _$StageImpl implements _Stage {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<dynamic>? _potentialPests;
+  final List<PotentialPest>? _potentialPests;
   @override
   @JsonKey(name: "potential_pests")
-  List<dynamic>? get potentialPests {
+  List<PotentialPest>? get potentialPests {
     final value = _potentialPests;
     if (value == null) return null;
     if (_potentialPests is EqualUnmodifiableListView) return _potentialPests;
@@ -1379,7 +1380,8 @@ abstract class _Stage implements Stage {
       {@JsonKey(name: "id") final int? id,
       @JsonKey(name: "management_practices")
       final List<ManagementPractice>? managementPractices,
-      @JsonKey(name: "potential_pests") final List<dynamic>? potentialPests,
+      @JsonKey(name: "potential_pests")
+      final List<PotentialPest>? potentialPests,
       @JsonKey(name: "variety") final dynamic variety,
       @JsonKey(name: "crop") final int? crop,
       @JsonKey(name: "major_stage") final dynamic majorStage,
@@ -1400,7 +1402,7 @@ abstract class _Stage implements Stage {
   List<ManagementPractice>? get managementPractices;
   @override
   @JsonKey(name: "potential_pests")
-  List<dynamic>? get potentialPests;
+  List<PotentialPest>? get potentialPests;
   @override
   @JsonKey(name: "variety")
   dynamic get variety;
