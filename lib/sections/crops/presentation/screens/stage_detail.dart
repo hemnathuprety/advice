@@ -13,13 +13,18 @@ class StageDetailScreen extends StatelessWidget {
       required this.majorStage,
       required this.stages,
       required this.cropThreats});
+
   MajorStage majorStage;
   List<Stage> stages;
   List<CropThreat> cropThreats;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBackDart(title: majorStage.name!),
+      appBar: CustomAppBackDart(
+        title: majorStage.name!,
+        showBack: true,
+      ),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 24),
         child: Column(
@@ -84,10 +89,8 @@ class StageDetailScreen extends StatelessWidget {
                                           width: 100,
                                           height: 100,
                                           'assets/images/crop_1.png'),
-                                  Text("Usually Take " +
-                                      (stages[index].durationDays.toString() ??
-                                          "No start date") +
-                                      " days"),
+                                  Text(
+                                      "Usually Take ${stages[index].durationDays.toString() ?? "No start date"} days"),
                                 ],
                               ),
                               SizedBox(
