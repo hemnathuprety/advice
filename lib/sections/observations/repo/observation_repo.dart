@@ -29,8 +29,13 @@ class ObservationRepo {
   }
 
   Future<LocationsModel> getLocationDetail(lat, lon) async {
-    var response = await dio.dio.get('/agro/locations/?lat=$lat&lon=$lon');
-    return LocationsModel.fromJson(response.data);
+    try {
+      var response = await dio.dio.get('/agro/locations/?lat=$lat&lon=$lon');
+      return LocationsModel.fromJson(response.data);
+    } catch (e) {
+      log(e.toString());
+      return LocationsModel();
+    }
   }
 
   Future<DistrictsModel> getDistrictDetail(provinceId) async {

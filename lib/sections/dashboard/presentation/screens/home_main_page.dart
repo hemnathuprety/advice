@@ -1,11 +1,18 @@
+import 'dart:developer';
+
 import 'package:advice/core/components/floating_menu_button.dart';
 import 'package:advice/core/components/location_selection.dart';
 import 'package:advice/sections/dashboard/presentation/blocs/dashboard_stats_bloc.dart';
 import 'package:advice/sections/dashboard/presentation/widgets/active_crop_advisory.dart';
 import 'package:advice/sections/dashboard/presentation/widgets/crop_guide_widget.dart';
+import 'package:advice/sections/dashboard/presentation/widgets/enable_location_dialog.dart';
+import 'package:advice/sections/dashboard/presentation/widgets/select_location_dialog.dart';
 import 'package:advice/sections/dashboard/presentation/widgets/weather_card.dart';
+import 'package:advice/sections/observations/models/locations_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class HomeStatsView extends StatefulWidget {
   const HomeStatsView({
@@ -32,6 +39,40 @@ class _HomeStatsViewState extends State<HomeStatsView> {
   void initState() {
     super.initState();
     _controller.addListener(_onChanged);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      enableLocation();
+    });
+  }
+
+  void enableLocation() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return EnableLocationDialog(
+          onEnableLocation: () {
+            _requestLocationPermission();
+          },
+          onSelectManually: onSelectManually,
+        );
+      },
+    );
+  }
+
+  void onSelectManually() {
+    showDialog(
+      context: context,
+      builder: (context) => SelectLocationDialog(
+        onLocationSelect: (LocationsModel location) {
+          loadForecast(location);
+        },
+      ),
+    );
+  }
+
+  void loadForecast(LocationsModel location) {
+    context.read<DashboardStatsBloc>().add(
+          DashboardStatsEvent.loadForecast(location),
+        );
   }
 
   void _onChanged() {
@@ -49,6 +90,39 @@ class _HomeStatsViewState extends State<HomeStatsView> {
     );
   }
 
+  Future<void> _requestLocationPermission() async {
+    PermissionStatus status = await Permission.location.request();
+
+    if (status.isGranted) {
+      log("Location permission granted");
+
+      _getCurrentPosition();
+    } else if (status.isDenied || status.isPermanentlyDenied) {
+      openAppSettings();
+    }
+  }
+
+  Future<void> _getCurrentPosition() async {
+    final LocationSettings locationSettings = LocationSettings(
+      accuracy: LocationAccuracy.high,
+      distanceFilter: 100,
+    );
+    await Geolocator.getCurrentPosition(locationSettings: locationSettings)
+        .then((Position position) {
+      log("position $position");
+      if (context.mounted) {
+        context.read<DashboardStatsBloc>().add(
+              DashboardStatsEvent.locationDetailLoad(
+                position.latitude.toString(),
+                position.longitude.toString(),
+              ),
+            );
+      }
+    }).catchError((e) {
+      debugPrint(e);
+    });
+  }
+
   @override
   void dispose() {
     super.dispose();
@@ -62,7 +136,13 @@ class _HomeStatsViewState extends State<HomeStatsView> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<DashboardStatsBloc, DashboardStatsState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state.locations != null && state.isLocationLoaded) {
+          context.read<DashboardStatsBloc>().add(
+                DashboardStatsEvent.loadForecast(state.locations!),
+              );
+        }
+      },
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
@@ -93,7 +173,11 @@ class _HomeStatsViewState extends State<HomeStatsView> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: LocationSelection(),
+                      child: LocationSelection(
+                        location: state.locations?.municipality?.name ??
+                            "Select Location",
+                        onTap: onSelectManually,
+                      ),
                     ),
                     SizedBox(
                       height: 8,
