@@ -136,8 +136,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           create: (context) => getIt<ProfileBloc>(),
         ),
         BlocProvider(
-          create: (context) =>
-              getIt<DashboardStatsBloc>()..add(DashboardStatsEvent.started()),
+          create: (context) => getIt<DashboardStatsBloc>(),
         ),
       ],
       child: MultiBlocListener(

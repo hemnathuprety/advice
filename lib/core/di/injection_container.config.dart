@@ -21,6 +21,8 @@ import '../../sections/crops/repo/crops_list_repo.dart' as _i993;
 import '../../sections/dashboard/presentation/blocs/dashboard_stats_bloc.dart'
     as _i64;
 import '../../sections/dashboard/presentation/blocs/profile_bloc.dart' as _i380;
+import '../../sections/dashboard/presentation/blocs/select_location_bloc.dart'
+    as _i977;
 import '../../sections/forecasts/bloc/weather_bloc.dart' as _i107;
 import '../../sections/forecasts/repo/forecasts_repo.dart' as _i739;
 import '../../sections/observations/blocs/observation_bloc.dart' as _i960;
@@ -55,14 +57,18 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i123.AdvisoryListRepo(dio: gh<_i676.DioHelper>()));
     gh.factory<_i351.CropsBloc>(
         () => _i351.CropsBloc(cropslistRepo: gh<_i993.CropslistRepo>()));
+    gh.factory<_i64.DashboardStatsBloc>(() => _i64.DashboardStatsBloc(
+          forecastsRepo: gh<_i739.ForecastsRepo>(),
+          observationRepo: gh<_i668.ObservationRepo>(),
+        ));
     gh.factory<_i207.ObservationImageBloc>(() => _i207.ObservationImageBloc(
         observationRepo: gh<_i668.ObservationRepo>()));
+    gh.factory<_i977.SelectLocationBloc>(() =>
+        _i977.SelectLocationBloc(observationRepo: gh<_i668.ObservationRepo>()));
     gh.factory<_i228.LoginBloc>(
         () => _i228.LoginBloc(authRepo: gh<_i591.AuthRepo>()));
     gh.factory<_i259.AdvisoryListBloc>(() =>
         _i259.AdvisoryListBloc(advisoryListRepo: gh<_i123.AdvisoryListRepo>()));
-    gh.factory<_i64.DashboardStatsBloc>(() =>
-        _i64.DashboardStatsBloc(forecastsRepo: gh<_i739.ForecastsRepo>()));
     gh.factory<_i107.WeatherBloc>(
         () => _i107.WeatherBloc(forecastsRepo: gh<_i739.ForecastsRepo>()));
     gh.factory<_i960.ObservationBloc>(() => _i960.ObservationBloc(
