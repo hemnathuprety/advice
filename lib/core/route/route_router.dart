@@ -8,9 +8,11 @@ class AppRouter extends RootStackRouter {
         AutoRoute(path: '/home', page: HomeRoute.page, initial: true),
 
         //menuItemsAlerts
-        AutoRoute(path: '/alerts', page: AlertsRoute.page),
+        AutoRoute(path: '/repo', page: AlertsRoute.page),
         //menuItemsAdvisory,
         AutoRoute(path: '/addAdvisory', page: AddObservationMainRoute.page),
+        AutoRoute(path: '/advisoryList', page: AdvisoryListRoute.page),
+        AutoRoute(path: '/pdfView', page: PdfViewRoute.page),
         AutoRoute(path: '/cropList', page: CropListRoute.page),
         AutoRoute(path: '/cropDetail', page: CropDetailsRoute.page),
         AutoRoute(path: '/weatherDetail', page: ForecastDetailRoute.page),

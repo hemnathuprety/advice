@@ -39,7 +39,7 @@ class MenuItemModel {
         icon: FeatherIcons.map,
       ),
       MenuItemModel(
-        route: "alerts",
+        route: "repo",
         title: context.loc.alerts,
         icon: FeatherIcons.alertOctagon,
       ),

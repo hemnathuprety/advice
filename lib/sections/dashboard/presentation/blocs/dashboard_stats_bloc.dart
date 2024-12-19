@@ -6,9 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 part 'dashboard_stats_bloc.freezed.dart';
-
 part 'dashboard_stats_event.dart';
-
 part 'dashboard_stats_state.dart';
 
 @injectable
@@ -29,6 +27,7 @@ class DashboardStatsBloc
         var endDate = DateUtility().formatDateToYYYMMDD(futureDate);
 
         emit(state.copyWith(isLoading: true));
+
         var forecast = await forecastsRepo.getForecastDetails(
             startDate, endDate, administrativeId);
         emit(

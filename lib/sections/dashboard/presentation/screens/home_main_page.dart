@@ -103,7 +103,9 @@ class _HomeStatsViewState extends State<HomeStatsView> {
                       height: 8,
                     ),
                     if (state.forecastModel != null)
-                      WeatherCard(forecastModel: state.forecastModel!),
+                      WeatherCard(
+                        forecastModel: state.forecastModel!,
+                      ),
                     SizedBox(
                       height: 8,
                     ),

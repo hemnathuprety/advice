@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:advice/core/di/injection_container.dart';
 import 'package:advice/core/utils/dialog_utils.dart';
-import 'package:advice/sections/alerts/presentation/screens/alerts_page.dart';
 import 'package:advice/sections/auth/presentation/blocs/login_bloc.dart';
 import 'package:advice/sections/auth/presentation/screens/signin_view.dart';
 import 'package:advice/sections/dashboard/presentation/blocs/dashboard_stats_bloc.dart';
@@ -119,8 +118,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           });
         },
       ),
-      AlertsPage(),
-      AlertsPage(),
+      Placeholder(),
+      Placeholder(),
       SettingScreen(
         onSignInClick: () {
           _presentOnBoarding(true);
