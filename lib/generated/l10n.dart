@@ -600,10 +600,10 @@ class AppLocalizations {
     );
   }
 
-  /// `Advisory History`
+  /// `Advisories`
   String get advisoryHistory {
     return Intl.message(
-      'Advisory History',
+      'Advisories',
       name: 'advisoryHistory',
       desc: '',
       args: [],

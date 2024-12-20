@@ -27,7 +27,7 @@ class _ActiveCropAdvisoryWidgetState extends State<ActiveCropAdvisoryWidget> {
     final theme = Theme.of(context).textTheme;
     return BlocProvider(
       create: (context) =>
-          getIt<AdvisoryListBloc>()..add(const AdvisoryListEvent.load()),
+          getIt<AdvisoryListBloc>()..add(const AdvisoryListEvent.load(true)),
       child: Builder(builder: (context) {
         return Builder(builder: (context) {
           return Column(
@@ -85,15 +85,7 @@ class _ActiveCropAdvisoryWidgetState extends State<ActiveCropAdvisoryWidget> {
                           horizontal: 16, vertical: 4),
                       itemBuilder: (context, index) {
                         return AdvisoryItemBuilder(
-                          data: AdvisoryModel(
-                            crop: Crop(name: 'Rice'),
-                            observationSummary:
-                                'Some Description will go here to enlighten the user about this map.',
-                            color: 'Critical',
-                            advisoryStartDate: 'Jan 08 2024',
-                            pdf:
-                                "https://np-moald-api.rimes.int/v1/agro/media/advisory_dhanusha_25_10_2024.pdf",
-                          ),
+                          data: state.advisoryList[index],
                         );
                       },
                       itemCount: state.advisoryList.length,
@@ -126,6 +118,11 @@ class AdvisoryItemBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     Duration duration = const Duration(milliseconds: 200);
     final theme = Theme.of(context).textTheme;
+
+    var statusColor = data.color == 'red' ? Colors.red[100] : Colors.green[100];
+    var textColor = data.color == 'red' ? Colors.red : Colors.green;
+    var statusText = data.color == 'red' ? 'Critical' : 'Normal';
+
     return AnimatedContainer(
       width: width,
       height: height,
@@ -153,15 +150,13 @@ class AdvisoryItemBuilder extends StatelessWidget {
                 margin: EdgeInsets.only(right: 8),
                 padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
-                  color: data.color == 'Critical'
-                      ? Colors.red[100]
-                      : Colors.green[100],
+                  color: statusColor,
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Text(
-                  data.color ?? "",
+                  statusText,
                   style: theme.bodySmall?.copyWith(
-                    color: data.color == 'Critical' ? Colors.red : Colors.green,
+                    color: textColor,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -200,7 +195,7 @@ class AdvisoryItemBuilder extends StatelessWidget {
               InkWell(
                 onTap: () {
                   if (data.pdf != null) {
-                    context.pushRoute(PdfViewRoute(path: data.pdf ?? ""));
+                    context.pushRoute(PdfViewRoute(path: data.pdf ?? "", title: data.crop?.name ?? ""));
                   }
                 },
                 child: Container(

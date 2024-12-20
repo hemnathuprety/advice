@@ -12,6 +12,7 @@ class SharedPrefManager {
   static const notificationSetting = 'notification_setting';
   static const appSetup = 'app_setup';
   static const accessToken = 'access_token';
+  static const locations = 'location';
 
   Future<void> setAppSetUp() async {
     final sharedPref = await SharedPreferences.getInstance();
@@ -23,6 +24,7 @@ class SharedPrefManager {
     final result = sharedPref.getBool(appSetup);
     return result ?? false;
   }
+
   Future<void> setNotificationSetting(bool param) async {
     final sharedPref = await SharedPreferences.getInstance();
     await sharedPref.setBool(notificationSetting, param);
@@ -34,15 +36,26 @@ class SharedPrefManager {
     return result ?? false;
   }
 
-  Future<void> setUserProfile(String code) async {
+  Future<void> setUserProfile(String profile) async {
     final sharedPref = await SharedPreferences.getInstance();
-    await sharedPref.setString(accessToken, code);
+    await sharedPref.setString(accessToken, profile);
   }
 
   Future<String> getUserProfile() async {
     final sharedPref = await SharedPreferences.getInstance();
     final result = sharedPref.getString(accessToken);
     return result ?? '';
+  }
+
+  Future<void> setUserLocation(String location) async {
+    final sharedPref = await SharedPreferences.getInstance();
+    await sharedPref.setString(locations, location);
+  }
+
+  Future<String> getUserLocation() async {
+    final sharedPref = await SharedPreferences.getInstance();
+    final location = sharedPref.getString(locations);
+    return location ?? "";
   }
 
   Future<void> clearSharePref() async {

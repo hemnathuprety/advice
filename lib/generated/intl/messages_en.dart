@@ -39,8 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Add Bridge Closure Advisory"),
         "addRoadClosureAdvisory":
             MessageLookupByLibrary.simpleMessage("Add Road Closure Advisory"),
-        "advisoryHistory":
-            MessageLookupByLibrary.simpleMessage("Advisory History"),
+        "advisoryHistory": MessageLookupByLibrary.simpleMessage("Advisories"),
         "alerts": MessageLookupByLibrary.simpleMessage("Alerts"),
         "ambulance": MessageLookupByLibrary.simpleMessage("Ambulance"),
         "averageRepairTimePerMonth": MessageLookupByLibrary.simpleMessage(

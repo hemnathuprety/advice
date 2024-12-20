@@ -125,7 +125,7 @@ class SelectLocationDialog extends StatelessWidget {
                       }
                     },
                     child: Text(
-                      'Set Location',
+                      'Save',
                       style: theme.bodyLarge?.copyWith(color: Colors.white),
                     ),
                   ),

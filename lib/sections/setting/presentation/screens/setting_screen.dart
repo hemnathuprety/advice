@@ -1,9 +1,13 @@
+import 'dart:convert';
+
 import 'package:advice/core/components/custom_app_back_dart.dart';
 import 'package:advice/core/utils/dialog_utils.dart';
 import 'package:advice/core/utils/localization_utils.dart';
 import 'package:advice/core/utils/shared_pref_manager.dart';
 import 'package:advice/sections/dashboard/presentation/blocs/profile_bloc.dart';
 import 'package:advice/sections/dashboard/presentation/widgets/auth_button_widget.dart';
+import 'package:advice/sections/dashboard/presentation/widgets/select_location_dialog.dart';
+import 'package:advice/sections/observations/models/locations_model.dart';
 import 'package:advice/sections/setting/presentation/screens/language_selection_dialog.dart';
 import 'package:advice/themes/color_extensions.dart';
 import 'package:auto_route/auto_route.dart';
@@ -33,6 +37,19 @@ class _SettingScreenState extends State<SettingScreen> {
           },
         );
       },
+    );
+  }
+
+
+  void onSelectCurrentLocation() {
+    showDialog(
+      context: context,
+      builder: (context) => SelectLocationDialog(
+        onLocationSelect: (LocationsModel location) async {
+          await SharedPrefManager.instance
+              .setUserLocation(jsonEncode(location));
+        },
+      ),
     );
   }
 
@@ -136,6 +153,17 @@ class _SettingScreenState extends State<SettingScreen> {
                                   size: 20,
                                 ),
                                 onTap: () => openLanguageDialog(context),
+                                contentPadding: EdgeInsets.symmetric(
+                                    horizontal: 0, vertical: 4),
+                              ),
+                              ListTile(
+                                title: Text("Current Location",
+                                    style: theme.bodyLarge),
+                                trailing: const Icon(
+                                  Icons.arrow_forward_ios,
+                                  size: 20,
+                                ),
+                                onTap: () => onSelectCurrentLocation(),
                                 contentPadding: EdgeInsets.symmetric(
                                     horizontal: 0, vertical: 4),
                               ),

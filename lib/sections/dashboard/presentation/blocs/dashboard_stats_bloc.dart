@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:advice/core/utils/date_utility.dart';
+import 'package:advice/core/utils/shared_pref_manager.dart';
 import 'package:advice/sections/dashboard/models/forecasts_model.dart';
 import 'package:advice/sections/forecasts/repo/forecasts_repo.dart';
 import 'package:advice/sections/observations/models/locations_model.dart';
@@ -47,6 +50,8 @@ class DashboardStatsBloc
             isLocationLoaded: true,
           ),
         );
+        await SharedPrefManager.instance
+            .setUserLocation(jsonEncode(locationsModel));
       });
     });
   }
