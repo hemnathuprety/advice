@@ -48,7 +48,6 @@ class _HomeStatsViewState extends State<HomeStatsView> {
         var location = LocationsModel.fromJson(data);
         log("User location $location");
         loadForecast(location);
-        enableLocation();
       } else {
         enableLocation();
       }
