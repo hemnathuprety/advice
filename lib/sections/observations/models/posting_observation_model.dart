@@ -7,6 +7,7 @@ part 'posting_observation_model.g.dart';
 class PostingObservationModel with _$PostingObservationModel {
   const factory PostingObservationModel({
     @JsonKey(name: 'crop') String? crop,
+    @JsonKey(name: 'variety') String? variety,
     @JsonKey(name: 'stages') String? stages,
     @JsonKey(name: 'observedCondition') String? observedCondition,
     @JsonKey(name: 'specificCondition') String? specificCondition,
