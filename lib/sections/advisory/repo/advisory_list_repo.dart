@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:advice/sections/advisory/models/advisory_model.dart';
+import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../core/dio/dio_helper.dart';
@@ -9,9 +12,12 @@ class AdvisoryListRepo {
 
   AdvisoryListRepo({required this.dio});
 
-  Future<List<AdvisoryModel>?> getAdvisoryList() async {
+  Future<List<AdvisoryModel>?> getAdvisoryList(
+      int districtId, bool status) async {
     try {
-      var response = await dio.dio.get('/agro/current-advisory-reports');
+      var response = await dio.dio.get(status
+          ? '/agro/current-advisory-reports?district_id=$districtId&status=latest'
+          : '/agro/current-advisory-reports?district_id=$districtId');
       if (response.statusCode == 200) {
         List<AdvisoryModel> cropsList = [];
         for (var item in response.data) {
@@ -19,28 +25,27 @@ class AdvisoryListRepo {
         }
         return cropsList;
       } else {
-       var data = AdvisoryModel(
-          crop: Crop(name: 'Rice'),
-          observationSummary:
-          'Some Description will go here to enlighten the user about this map.',
-          color: 'Critical',
-          advisoryStartDate: 'Jan 08 2024',
-          pdf:
-          "https://np-moald-api.rimes.int/v1/agro/media/advisory_dhanusha_25_10_2024.pdf",
-        );
-        return [data, data, data, data, data];
+        var path =
+            status ? 'assets/json/current_advisory_list.json' : 'assets/json/advisory_list.json';
+        String jsonString = await rootBundle.loadString(path);
+        var json = jsonDecode(jsonString);
+        List<AdvisoryModel> cropsList = [];
+        for (var item in json) {
+          cropsList.add(AdvisoryModel.fromJson(item));
+        }
+        return cropsList;
       }
     } catch (e) {
-      var data = AdvisoryModel(
-        crop: Crop(name: 'Rice'),
-        observationSummary:
-        'Some Description will go here to enlighten the user about this map.',
-        color: 'Critical',
-        advisoryStartDate: 'Jan 08 2024',
-        pdf:
-        "https://np-moald-api.rimes.int/v1/agro/media/advisory_dhanusha_25_10_2024.pdf",
-      );
-      return [data, data, data, data, data];
+      var path =
+          status ? 'assets/json/current_advisory_list.json' : 'assets/json/advisory_list.json';
+
+      String jsonString = await rootBundle.loadString(path);
+      var json = jsonDecode(jsonString);
+      List<AdvisoryModel> cropsList = [];
+      for (var item in json) {
+        cropsList.add(AdvisoryModel.fromJson(item));
+      }
+      return cropsList;
     }
   }
 }

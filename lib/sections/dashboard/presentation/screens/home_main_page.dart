@@ -1,7 +1,9 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:advice/core/components/floating_menu_button.dart';
 import 'package:advice/core/components/location_selection.dart';
+import 'package:advice/core/utils/shared_pref_manager.dart';
 import 'package:advice/sections/dashboard/presentation/blocs/dashboard_stats_bloc.dart';
 import 'package:advice/sections/dashboard/presentation/widgets/active_crop_advisory.dart';
 import 'package:advice/sections/dashboard/presentation/widgets/crop_guide_widget.dart';
@@ -39,8 +41,16 @@ class _HomeStatsViewState extends State<HomeStatsView> {
   void initState() {
     super.initState();
     _controller.addListener(_onChanged);
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      enableLocation();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      var strModel = await SharedPrefManager.instance.getUserLocation();
+      if (strModel.isNotEmpty) {
+        var data = jsonDecode(strModel);
+        var location = LocationsModel.fromJson(data);
+        log("User location $location");
+        loadForecast(location);
+      } else {
+        enableLocation();
+      }
     });
   }
 
@@ -62,8 +72,10 @@ class _HomeStatsViewState extends State<HomeStatsView> {
     showDialog(
       context: context,
       builder: (context) => SelectLocationDialog(
-        onLocationSelect: (LocationsModel location) {
+        onLocationSelect: (LocationsModel location) async {
           loadForecast(location);
+          await SharedPrefManager.instance
+              .setUserLocation(jsonEncode(location));
         },
       ),
     );
@@ -109,18 +121,19 @@ class _HomeStatsViewState extends State<HomeStatsView> {
     );
     await Geolocator.getCurrentPosition(locationSettings: locationSettings)
         .then((Position position) {
-      log("position $position");
-      if (context.mounted) {
-        context.read<DashboardStatsBloc>().add(
-              DashboardStatsEvent.locationDetailLoad(
-                position.latitude.toString(),
-                position.longitude.toString(),
-              ),
-            );
-      }
+      getLocations(position);
     }).catchError((e) {
       debugPrint(e);
     });
+  }
+
+  void getLocations(Position position) {
+    context.read<DashboardStatsBloc>().add(
+          DashboardStatsEvent.locationDetailLoad(
+            position.latitude.toString(),
+            position.longitude.toString(),
+          ),
+        );
   }
 
   @override
@@ -138,9 +151,7 @@ class _HomeStatsViewState extends State<HomeStatsView> {
     return BlocConsumer<DashboardStatsBloc, DashboardStatsState>(
       listener: (context, state) {
         if (state.locations != null && state.isLocationLoaded) {
-          context.read<DashboardStatsBloc>().add(
-                DashboardStatsEvent.loadForecast(state.locations!),
-              );
+          loadForecast(state.locations!);
         }
       },
       builder: (context, state) {

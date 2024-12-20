@@ -11,10 +11,12 @@ import 'package:path_provider/path_provider.dart';
 @RoutePage()
 class PdfViewScreen extends StatefulWidget {
   final String path;
+  final String title;
 
   const PdfViewScreen({
     super.key,
     required this.path,
+    required this.title,
   });
 
   @override
@@ -55,7 +57,7 @@ class _PDFScreenState extends State<PdfViewScreen> with WidgetsBindingObserver {
       print("Start download file from internet!");
     }
     try {
-      final url = "http://www.pdf995.com/samples/pdf.pdf";
+      final url = widget.path;
       final filename = url.substring(url.lastIndexOf("/") + 1);
       var request = await HttpClient().getUrl(Uri.parse(url));
       var response = await request.close();
@@ -84,7 +86,7 @@ class _PDFScreenState extends State<PdfViewScreen> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBackDart(
-        title: "PDF",
+        title: "${widget.title} Advisories",
         showBack: true,
       ),
       body: Stack(

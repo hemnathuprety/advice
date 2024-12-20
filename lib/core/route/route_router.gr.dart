@@ -222,12 +222,14 @@ class PdfViewRoute extends _i12.PageRouteInfo<PdfViewRouteArgs> {
   PdfViewRoute({
     _i14.Key? key,
     required String path,
+    required String title,
     List<_i12.PageRouteInfo>? children,
   }) : super(
           PdfViewRoute.name,
           args: PdfViewRouteArgs(
             key: key,
             path: path,
+            title: title,
           ),
           initialChildren: children,
         );
@@ -241,6 +243,7 @@ class PdfViewRoute extends _i12.PageRouteInfo<PdfViewRouteArgs> {
       return _i9.PdfViewScreen(
         key: args.key,
         path: args.path,
+        title: args.title,
       );
     },
   );
@@ -250,15 +253,18 @@ class PdfViewRouteArgs {
   const PdfViewRouteArgs({
     this.key,
     required this.path,
+    required this.title,
   });
 
   final _i14.Key? key;
 
   final String path;
 
+  final String title;
+
   @override
   String toString() {
-    return 'PdfViewRouteArgs{key: $key, path: $path}';
+    return 'PdfViewRouteArgs{key: $key, path: $path, title: $title}';
   }
 }
 

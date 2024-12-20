@@ -43,7 +43,7 @@ class _AdvisoryListScreenState extends State<AdvisoryListScreen> {
     final theme = Theme.of(context).textTheme;
     return BlocProvider(
       create: (context) =>
-          getIt<AdvisoryListBloc>()..add(AdvisoryListEvent.load()),
+          getIt<AdvisoryListBloc>()..add(AdvisoryListEvent.load( false)),
       child: Scaffold(
         appBar: CustomAppBackDart(
           title: context.loc.advisoryHistory,

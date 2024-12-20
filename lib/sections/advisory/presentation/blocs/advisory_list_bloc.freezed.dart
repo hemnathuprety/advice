@@ -16,19 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AdvisoryListEvent {
+  bool get status => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() load,
+    required TResult Function(bool status) load,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? load,
+    TResult? Function(bool status)? load,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? load,
+    TResult Function(bool status)? load,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +49,12 @@ mixin _$AdvisoryListEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Create a copy of AdvisoryListEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $AdvisoryListEventCopyWith<AdvisoryListEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -55,6 +62,8 @@ abstract class $AdvisoryListEventCopyWith<$Res> {
   factory $AdvisoryListEventCopyWith(
           AdvisoryListEvent value, $Res Function(AdvisoryListEvent) then) =
       _$AdvisoryListEventCopyWithImpl<$Res, AdvisoryListEvent>;
+  @useResult
+  $Res call({bool status});
 }
 
 /// @nodoc
@@ -69,13 +78,29 @@ class _$AdvisoryListEventCopyWithImpl<$Res, $Val extends AdvisoryListEvent>
 
   /// Create a copy of AdvisoryListEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = null,
+  }) {
+    return _then(_value.copyWith(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$LoadImplCopyWith<$Res> {
+abstract class _$$LoadImplCopyWith<$Res>
+    implements $AdvisoryListEventCopyWith<$Res> {
   factory _$$LoadImplCopyWith(
           _$LoadImpl value, $Res Function(_$LoadImpl) then) =
       __$$LoadImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({bool status});
 }
 
 /// @nodoc
@@ -87,51 +112,76 @@ class __$$LoadImplCopyWithImpl<$Res>
 
   /// Create a copy of AdvisoryListEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = null,
+  }) {
+    return _then(_$LoadImpl(
+      null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$LoadImpl implements _Load {
-  const _$LoadImpl();
+  const _$LoadImpl(this.status);
+
+  @override
+  final bool status;
 
   @override
   String toString() {
-    return 'AdvisoryListEvent.load()';
+    return 'AdvisoryListEvent.load(status: $status)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$LoadImpl &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, status);
+
+  /// Create a copy of AdvisoryListEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadImplCopyWith<_$LoadImpl> get copyWith =>
+      __$$LoadImplCopyWithImpl<_$LoadImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() load,
+    required TResult Function(bool status) load,
   }) {
-    return load();
+    return load(status);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? load,
+    TResult? Function(bool status)? load,
   }) {
-    return load?.call();
+    return load?.call(status);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? load,
+    TResult Function(bool status)? load,
     required TResult orElse(),
   }) {
     if (load != null) {
-      return load();
+      return load(status);
     }
     return orElse();
   }
@@ -166,7 +216,17 @@ class _$LoadImpl implements _Load {
 }
 
 abstract class _Load implements AdvisoryListEvent {
-  const factory _Load() = _$LoadImpl;
+  const factory _Load(final bool status) = _$LoadImpl;
+
+  @override
+  bool get status;
+
+  /// Create a copy of AdvisoryListEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LoadImplCopyWith<_$LoadImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

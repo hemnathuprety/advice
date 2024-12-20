@@ -1,0 +1,27 @@
+[
+  {
+    "advisory_start_date": "2024-10-25",
+    "advisory_end_date": "2024-10-31",
+    "crop": {
+      "id": 3,
+      "name": "Rice"
+    },
+    "pest_alerts": true,
+    "color": "red",
+    "pdf": "https://np-moald-api.rimes.int/v1/agro/media/advisory_dhanusha_25_10_2024.pdf",
+    "observation_summary": "False Smut, Stem Borer, Leaf Hopper"
+  },
+
+  {
+    "advisory_start_date": "2024-10-19",
+    "advisory_end_date": "2024-10-22",
+    "crop": {
+      "id": 7,
+      "name": "Wheat"
+    },
+    "pest_alerts": true,
+    "color": "red",
+    "pdf": "https://np-moald-api.rimes.int/v1/agro/media/advisory_dhanusha_25_10_2024.pdf",
+    "observation_summary": "False Smut, Stem Borer, Leaf Hopper"
+  }
+]

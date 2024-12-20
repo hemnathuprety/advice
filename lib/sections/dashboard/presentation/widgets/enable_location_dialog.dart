@@ -26,10 +26,10 @@ class EnableLocationDialog extends StatelessWidget {
             CircleAvatar(
               radius: 30,
               backgroundColor: Colors.grey.shade200,
-              child: Icon(
-                Icons.location_on,
-                color: Colors.black,
-                size: 30,
+              child: Image.asset(
+                'assets/images/location_icon.png',
+                width: 24,
+                height: 24,
               ),
             ),
             const SizedBox(height: 16),
