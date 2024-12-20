@@ -53,6 +53,7 @@ class _AddObservationPageState extends State<AddObservationPage> {
   ProvinceModel? selectedProvince;
   Districts? selectedDistrict;
   CropsModel? selectedCrop;
+  Variety? selectedVariety;
   Stage? selectedCropStage;
   ManagementPractice? selectedManagementPractice;
   PotentialPest? selectedPest;
@@ -99,8 +100,8 @@ class _AddObservationPageState extends State<AddObservationPage> {
                     }
                     if (state.isLocationLoaded) {
                       context.read<ObservationBloc>().add(
-                        ObservationEvent.reset(),
-                      );
+                            ObservationEvent.reset(),
+                          );
                       selectedProvince = state.locations?.province;
                       selectedDistrict = state.locations?.district;
                       selectedMunicipality = state.locations?.municipality;
@@ -260,6 +261,25 @@ class _AddObservationPageState extends State<AddObservationPage> {
                               label: value.name ?? "",
                             );
                           }).toList(),
+                        ),
+                        CustomSelectMenuView(
+                          key: UniqueKey(),
+                          onSelected: (p0) {
+                            setState(() {
+                              selectedVariety = p0;
+                            });
+                          },
+                          titleText: "Variety:",
+                          hintText: "Select Variety",
+                          initialSelection: selectedVariety,
+                          list: state.varieties.map<DropdownMenuEntry<Variety>>(
+                                  (Variety value) {
+                                return DropdownMenuEntry<Variety>(
+                                  value: value,
+                                  label: value.name ?? "",
+                                );
+                              }).toList() ??
+                              [],
                         ),
                         CustomSelectMenuView(
                           key: UniqueKey(),
@@ -513,6 +533,7 @@ class _AddObservationPageState extends State<AddObservationPage> {
       district: districtId.toString(),
       municipality: municipalityId.toString(),
       crop: cropId.toString(),
+      variety: selectedVariety?.id.toString(),
       stages: selectedCropStage?.id?.toString(),
       observedCondition: selectedObservedCondition,
       managementPractices: selectedManagementPractice?.id?.toString(),

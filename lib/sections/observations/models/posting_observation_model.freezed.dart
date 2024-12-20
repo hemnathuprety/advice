@@ -23,6 +23,8 @@ PostingObservationModel _$PostingObservationModelFromJson(
 mixin _$PostingObservationModel {
   @JsonKey(name: 'crop')
   String? get crop => throw _privateConstructorUsedError;
+  @JsonKey(name: 'variety')
+  String? get variety => throw _privateConstructorUsedError;
   @JsonKey(name: 'stages')
   String? get stages => throw _privateConstructorUsedError;
   @JsonKey(name: 'observedCondition')
@@ -77,6 +79,7 @@ abstract class $PostingObservationModelCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'crop') String? crop,
+      @JsonKey(name: 'variety') String? variety,
       @JsonKey(name: 'stages') String? stages,
       @JsonKey(name: 'observedCondition') String? observedCondition,
       @JsonKey(name: 'specificCondition') String? specificCondition,
@@ -114,6 +117,7 @@ class _$PostingObservationModelCopyWithImpl<$Res,
   @override
   $Res call({
     Object? crop = freezed,
+    Object? variety = freezed,
     Object? stages = freezed,
     Object? observedCondition = freezed,
     Object? specificCondition = freezed,
@@ -136,6 +140,10 @@ class _$PostingObservationModelCopyWithImpl<$Res,
       crop: freezed == crop
           ? _value.crop
           : crop // ignore: cast_nullable_to_non_nullable
+              as String?,
+      variety: freezed == variety
+          ? _value.variety
+          : variety // ignore: cast_nullable_to_non_nullable
               as String?,
       stages: freezed == stages
           ? _value.stages
@@ -220,6 +228,7 @@ abstract class _$$PostingObservationModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'crop') String? crop,
+      @JsonKey(name: 'variety') String? variety,
       @JsonKey(name: 'stages') String? stages,
       @JsonKey(name: 'observedCondition') String? observedCondition,
       @JsonKey(name: 'specificCondition') String? specificCondition,
@@ -256,6 +265,7 @@ class __$$PostingObservationModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? crop = freezed,
+    Object? variety = freezed,
     Object? stages = freezed,
     Object? observedCondition = freezed,
     Object? specificCondition = freezed,
@@ -278,6 +288,10 @@ class __$$PostingObservationModelImplCopyWithImpl<$Res>
       crop: freezed == crop
           ? _value.crop
           : crop // ignore: cast_nullable_to_non_nullable
+              as String?,
+      variety: freezed == variety
+          ? _value.variety
+          : variety // ignore: cast_nullable_to_non_nullable
               as String?,
       stages: freezed == stages
           ? _value.stages
@@ -356,6 +370,7 @@ class __$$PostingObservationModelImplCopyWithImpl<$Res>
 class _$PostingObservationModelImpl implements _PostingObservationModel {
   const _$PostingObservationModelImpl(
       {@JsonKey(name: 'crop') this.crop,
+      @JsonKey(name: 'variety') this.variety,
       @JsonKey(name: 'stages') this.stages,
       @JsonKey(name: 'observedCondition') this.observedCondition,
       @JsonKey(name: 'specificCondition') this.specificCondition,
@@ -381,6 +396,9 @@ class _$PostingObservationModelImpl implements _PostingObservationModel {
   @override
   @JsonKey(name: 'crop')
   final String? crop;
+  @override
+  @JsonKey(name: 'variety')
+  final String? variety;
   @override
   @JsonKey(name: 'stages')
   final String? stages;
@@ -435,7 +453,7 @@ class _$PostingObservationModelImpl implements _PostingObservationModel {
 
   @override
   String toString() {
-    return 'PostingObservationModel(crop: $crop, stages: $stages, observedCondition: $observedCondition, specificCondition: $specificCondition, dateObserved: $dateObserved, waterResource: $waterResource, province: $province, district: $district, municipality: $municipality, lat: $lat, lon: $lon, image: $image, group: $group, managementPractices: $managementPractices, pests: $pests, unverifiedPests: $unverifiedPests, unverifiedDisease: $unverifiedDisease, unverifiedManagementPractices: $unverifiedManagementPractices)';
+    return 'PostingObservationModel(crop: $crop, variety: $variety, stages: $stages, observedCondition: $observedCondition, specificCondition: $specificCondition, dateObserved: $dateObserved, waterResource: $waterResource, province: $province, district: $district, municipality: $municipality, lat: $lat, lon: $lon, image: $image, group: $group, managementPractices: $managementPractices, pests: $pests, unverifiedPests: $unverifiedPests, unverifiedDisease: $unverifiedDisease, unverifiedManagementPractices: $unverifiedManagementPractices)';
   }
 
   @override
@@ -444,6 +462,7 @@ class _$PostingObservationModelImpl implements _PostingObservationModel {
         (other.runtimeType == runtimeType &&
             other is _$PostingObservationModelImpl &&
             (identical(other.crop, crop) || other.crop == crop) &&
+            (identical(other.variety, variety) || other.variety == variety) &&
             (identical(other.stages, stages) || other.stages == stages) &&
             (identical(other.observedCondition, observedCondition) ||
                 other.observedCondition == observedCondition) &&
@@ -478,26 +497,28 @@ class _$PostingObservationModelImpl implements _PostingObservationModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      crop,
-      stages,
-      observedCondition,
-      specificCondition,
-      dateObserved,
-      waterResource,
-      province,
-      district,
-      municipality,
-      lat,
-      lon,
-      image,
-      group,
-      managementPractices,
-      pests,
-      unverifiedPests,
-      unverifiedDisease,
-      unverifiedManagementPractices);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        crop,
+        variety,
+        stages,
+        observedCondition,
+        specificCondition,
+        dateObserved,
+        waterResource,
+        province,
+        district,
+        municipality,
+        lat,
+        lon,
+        image,
+        group,
+        managementPractices,
+        pests,
+        unverifiedPests,
+        unverifiedDisease,
+        unverifiedManagementPractices
+      ]);
 
   /// Create a copy of PostingObservationModel
   /// with the given fields replaced by the non-null parameter values.
@@ -519,6 +540,7 @@ class _$PostingObservationModelImpl implements _PostingObservationModel {
 abstract class _PostingObservationModel implements PostingObservationModel {
   const factory _PostingObservationModel(
       {@JsonKey(name: 'crop') final String? crop,
+      @JsonKey(name: 'variety') final String? variety,
       @JsonKey(name: 'stages') final String? stages,
       @JsonKey(name: 'observedCondition') final String? observedCondition,
       @JsonKey(name: 'specificCondition') final String? specificCondition,
@@ -545,6 +567,9 @@ abstract class _PostingObservationModel implements PostingObservationModel {
   @override
   @JsonKey(name: 'crop')
   String? get crop;
+  @override
+  @JsonKey(name: 'variety')
+  String? get variety;
   @override
   @JsonKey(name: 'stages')
   String? get stages;
