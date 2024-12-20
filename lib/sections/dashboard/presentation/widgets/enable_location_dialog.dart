@@ -23,14 +23,9 @@ class EnableLocationDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             // Circular icon at the top
-            CircleAvatar(
-              radius: 30,
-              backgroundColor: Colors.grey.shade200,
-              child: Image.asset(
-                'assets/images/location_icon.png',
-                width: 24,
-                height: 24,
-              ),
+            Image.asset(
+              'assets/images/location_icon.png',
+              width: 160,
             ),
             const SizedBox(height: 16),
             // Title
