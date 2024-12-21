@@ -339,7 +339,7 @@ class PestDetailsSheet extends StatelessWidget {
                   return ListTile(
                     leading: pest.imageUrl != null
                         ? Image.network(
-                            pest.imageUrl!,
+                            pest.imageUrl!.toFullImageUrl(),
                             width: 50,
                             height: 50,
                             errorBuilder: (context, error, stackTrace) {
@@ -385,19 +385,19 @@ class PestDetailsSheet extends StatelessWidget {
             children: [
               pest.imageUrl != null
                   ? Image.network(
-                      pest.imageUrl!,
+                      pest.imageUrl!.toFullImageUrl(),
                       width: 100,
                       height: 100,
                       errorBuilder: (context, error, stackTrace) {
                         return Image.asset(
-                          "assets/images/crop_placeholder.png",
+                          "assets/images/crop_1.png",
                           width: 100,
                           height: 100,
                         );
                       },
                     )
                   : Image.asset(
-                      "assets/images/crop_placeholder.png",
+                      "assets/images/crop_1.png",
                       width: 100,
                       height: 100,
                     ),

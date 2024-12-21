@@ -2,6 +2,7 @@
 //
 //     final cropDetail = cropDetailFromMap(jsonString);
 
+import 'package:advice/core/constants/api_constants.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'crop_detail.freezed.dart';
@@ -96,4 +97,10 @@ class Variety with _$Variety {
 
   factory Variety.fromJson(Map<String, dynamic> json) =>
       _$VarietyFromJson(json);
+}
+
+extension ImagePathExtensions on String? {
+  String toFullImageUrl() {
+    return '${ApiConstants.imageBaseUrl}${this ?? ''}';
+  }
 }
