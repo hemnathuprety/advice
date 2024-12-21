@@ -10,6 +10,7 @@ _$PostingObservationModelImpl _$$PostingObservationModelImplFromJson(
         Map<String, dynamic> json) =>
     _$PostingObservationModelImpl(
       crop: json['crop'] as String?,
+      variety: json['variety'] as String?,
       stages: json['stages'] as String?,
       observedCondition: json['observedCondition'] as String?,
       specificCondition: json['specificCondition'] as String?,
@@ -34,6 +35,7 @@ Map<String, dynamic> _$$PostingObservationModelImplToJson(
         _$PostingObservationModelImpl instance) =>
     <String, dynamic>{
       'crop': instance.crop,
+      'variety': instance.variety,
       'stages': instance.stages,
       'observedCondition': instance.observedCondition,
       'specificCondition': instance.specificCondition,
